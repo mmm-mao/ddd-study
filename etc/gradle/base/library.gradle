@@ -1,0 +1,182 @@
+/**
+ * ISP領域向けJava共通ライブラリの設定
+ */
+
+// Mavenリポジトリの設定
+repositories {
+    mavenCentral()
+}
+
+/**
+ * プロダクトコードで使用する依存ライブラリの設定
+ */
+
+// 外部ライブラリ
+ext {
+
+    // 参考：http://mvnrepository.com/artifact/org.springframework/spring-core
+    springframeworkVersion = '4.1.1.RELEASE'
+
+    // 参考：http://mvnrepository.com/artifact/org.springframework.data/spring-data-commons
+    springDataCommonsVersion = '1.9.0.RELEASE'
+
+    // 参考：http://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
+    jacksonVersion = '2.4.2'
+
+    // 参考：http://mvnrepository.com/artifact/org.aspectj/aspectjweaver
+    aspectjVersion = '1.8.2'
+
+    // 参考：http://mvnrepository.com/artifact/ch.qos.logback/logback-classic
+    logbackVersion = '1.1.2'
+
+    // 参考：http://mvnrepository.com/artifact/org.slf4j/slf4j-api
+    slf4jVersion = '1.7.7'
+
+    // 参考：http://mvnrepository.com/artifact/org.hibernate/hibernate-validator
+    hibernateValidatorVersion = '5.1.2.Final'
+
+    // 参考：http://mvnrepository.com/artifact/javax.el/javax.el-api
+    elApiVersion = '3.0.0'
+
+    // 参考：http://mvnrepository.com/artifact/org.glassfish.web/javax.el
+    elVersion = '2.2.6'
+
+    // 参考：http://mvnrepository.com/artifact/org.mybatis/mybatis
+    mybatisVersion = '3.2.8'
+
+    // 参考：http://mvnrepository.com/artifact/org.mybatis/mybatis-spring
+    mybatisSpringVersion = '1.2.2'
+
+    // 参考：http://mvnrepository.com/artifact/commons-dbcp/commons-dbcp
+    commonsDbcpVersion = '1.4'
+
+    // 参考：http://mvnrepository.com/artifact/org.codehaus.groovy/groovy-all
+    groovyVersion = '2.3.7'
+
+    // 参考：http://mvnrepository.com/artifact/org.projectlombok/lombok
+    lombokVersion = '1.14.8'
+
+    // 参考：http://mvnrepository.com/artifact/javax.servlet/javax.servlet-api
+    servletVersion = '3.0.1'
+}
+
+// 自作ライブラリ
+ext {
+    isplibraryVersion = '1.2.5'
+    charsetVersion = '2.0'
+}
+
+dependencies {
+    /**
+     * 外部ライブラリ（コンパイル時に必要）
+     */
+    // Spring 関連
+    compile "org.springframework:spring-webmvc:${springframeworkVersion}"
+    compile "org.springframework:spring-jdbc:${springframeworkVersion}" // 記述しないと古いバージョンを使用してしまうようだ
+    compile "org.springframework.data:spring-data-commons:${springDataCommonsVersion}" // Pageableが依存してる
+
+    // データベース 関連
+    compile "org.mybatis:mybatis:${mybatisVersion}" // O/Rマッパー
+    compile "org.mybatis:mybatis-spring:${mybatisSpringVersion}" // Spring-MyBatis連携
+    compile "commons-dbcp:commons-dbcp:${commonsDbcpVersion}" // コネクションプール用のライブラリ
+
+    // バリデーション 関連
+    compile "org.hibernate:hibernate-validator:${hibernateValidatorVersion}" // バリデータの本体
+    compile "javax.el:javax.el-api:${elApiVersion}" // hibernate-validatorが依存
+    compile "org.glassfish.web:javax.el:${elVersion}" // hibernate-validatorが依存
+
+    // Groovy 関連
+    compile "org.codehaus.groovy:groovy-all:${groovyVersion}" // 独自テンプレートエンジンとして活用
+
+    /**
+     * 外部ライブラリ（実行時に必要／ライブラリやフレームワークで隠蔽されてるので、コンパイル時には不要）
+     */
+    // ロギング 関連
+    runtime "org.slf4j:slf4j-api:${slf4jVersion}" // ロガーのFacade／ログ出力の記述をアプリケーション側で手動で書く場合のみcompileに変更する
+    runtime "ch.qos.logback:logback-classic:${logbackVersion}" // ロガーの実体／slf4jで隠蔽されるのでruntimeでOK
+
+    // JAX-RS 関連
+    runtime "com.fasterxml.jackson.core:jackson-databind:${jacksonVersion}" // POJOをJSONにマッピング／Springから呼び出される
+
+    // AOP 関連
+    runtime "org.aspectj:aspectjweaver:${aspectjVersion}" // AspectJを使うために必須
+    runtime "org.aspectj:aspectjrt:${aspectjVersion}" // AOPフレームワーク
+    runtime "org.springframework:spring-aop:${springframeworkVersion}"// Springが提供するAOPフレームワーク
+
+    /**
+     * 外部ライブラリ（コンパイル時には必要だが、warファイルに含める必要なし）
+     */
+    // Servlet 関連
+    providedCompile "javax.servlet:javax.servlet-api:${servletVersion}" // tomcatに内蔵されているのでwarファイルには含めない
+
+    // Getter等のボイラープレートコードの自動生成（参考URL　http://www.coppermine.jp/docs/programming/2014/01/lombok.html）
+    providedCompile "org.projectlombok:lombok:${lombokVersion}"
+
+    /**
+     * 自作ライブラリ（コンパイル時に必要）
+     */
+    // ISP領域向けJava共通ライブラリ
+    compile files("etc/library/production/isplibrary-${isplibraryVersion}.jar")
+
+    /**
+     * 自作ライブラリ（実行時に必要／ライブラリで隠蔽されてるので、コンパイル時には不要）
+     */
+    // EUCからUTF-8への変換ライブラリ
+    runtime files("etc/library/production/charset-${charsetVersion}.jar")
+
+    // BOでのオフラインビルド時は内部管理しているライブラリを参照
+//    if (file('repository').exists()) {
+//        compile fileTree(dir: 'repository', include: '*.jar')
+//        return;
+//    }
+
+}
+
+/**
+ * テストコードで使用する依存ライブラリの設定
+ */
+
+// 外部ライブラリ
+ext {
+    junitDepVersion = '4.10'
+    dbunitVersion = '2.4.9'
+    cloningVersion = '1.9.0'
+    jsonpathVersion = '0.8.1'
+    ojdbcVersion = '11.2.0.4'
+}
+
+dependencies {
+
+    // テスト 関連
+    // testCompile "junit:junit:4.11"
+    testCompile "junit:junit-dep:${junitDepVersion}" // 参照 http://futurismo.biz/archives/1172
+    testCompile "org.dbunit:dbunit:${dbunitVersion}" // DBテストで必要
+    testCompile "uk.com.robust-it:cloning:${cloningVersion}" // List/Mapのディープクローンを行うライブラリ／Fixtureの作成で必要
+    testCompile "org.springframework:spring-test:${springframeworkVersion}" // Springのコントローラテストで必要
+    testCompile "com.jayway.jsonpath:json-path-assert:${jsonpathVersion}" // コントローラのJSONのテストで必要
+
+    // Oracle接続用ライブラリ／BOではクラスパスに置いてあるらしいので testCompile にしている
+    testCompile files("etc/library/local/ojdbc6-${ojdbcVersion}.jar")
+}
+
+/**
+ * ローカル環境でのみ使用する依存ライブラリの設定
+ */
+
+// 外部ライブラリ
+ext {
+    h2Version = '1.4.181'
+}
+
+// 自作ライブラリ
+ext {
+    h2storedprocedureVersion = '2.0'
+}
+
+dependencies {
+    // ローカル環境でのみ、h2のライブラリを使用する
+    if (environmentChecker.isLocal()) {
+        compile "com.h2database:h2:${h2Version}"
+        testCompile files("etc/library/local/h2storedprocedure-${h2storedprocedureVersion}.jar")
+    }
+}

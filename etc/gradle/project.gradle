@@ -1,0 +1,17 @@
+/**
+ * プロジェクト固有の設定
+ */
+
+ext {
+    // プロジェクトごとにユニークな名前
+    // warファイル名、Tomcatのコンテキストパス(APIのURL)に使用される
+    projectName = 'sample-project'
+}
+
+// アプリケーション固有で利用したい外部ライブラリを指定
+dependencies {
+
+    // 日付関連
+    // compile "joda-time:joda-time:2.4"
+
+}

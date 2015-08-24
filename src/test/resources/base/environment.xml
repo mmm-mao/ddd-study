@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+       ">
+
+
+    <!-- ======================================================================
+    |
+    |    環境ごとに切り替える設定を記述（base-root.xmlから読み込まれる）
+    |
+    =========================================================================== -->
+
+
+    <bean id="propertyConfigurer"
+          class="jp.co.biglobe.lib.essential.property.PropertyAccessor">
+        <property name="locations">
+            <list>
+                <!--<value>classpath:properties/environment/${environment}.properties</value>-->
+                <value>classpath:properties/environment/localMac.properties</value>
+                <value>classpath:properties/base/ddl-path.properties</value>
+                <value>classpath:properties/base/scenario.properties</value>
+                <value>classpath:properties/base/identifier.properties</value>
+            </list>
+        </property>
+    </bean>
+
+</beans>

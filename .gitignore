@@ -1,0 +1,15 @@
+*.db
+.DS_Store
+target/
+.settings/
+nb-configuration.xml
+.idea/
+*.iml
+*.ipr
+*.iws
+.classpath
+.project
+src/main/webapp/WEB-INF/classes/
+build/
+.gradle
+classes/*
