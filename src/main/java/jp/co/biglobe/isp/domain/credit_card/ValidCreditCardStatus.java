@@ -1,6 +1,11 @@
 package jp.co.biglobe.isp.domain.credit_card;
 
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
+@ToString(includeFieldNames = false)
+@AllArgsConstructor
 public enum ValidCreditCardStatus {
     有効,
     無効;

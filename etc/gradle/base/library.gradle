@@ -116,13 +116,13 @@ dependencies {
      * 自作ライブラリ（コンパイル時に必要）
      */
     // ISP領域向けJava共通ライブラリ
-    compile files("etc/library/production/isplibrary-${isplibraryVersion}.jar")
+    //compile files("etc/library/production/isplibrary-${isplibraryVersion}.jar")
 
     /**
      * 自作ライブラリ（実行時に必要／ライブラリで隠蔽されてるので、コンパイル時には不要）
      */
     // EUCからUTF-8への変換ライブラリ
-    runtime files("etc/library/production/charset-${charsetVersion}.jar")
+    //runtime files("etc/library/production/charset-${charsetVersion}.jar")
 
     // BOでのオフラインビルド時は内部管理しているライブラリを参照
 //    if (file('repository').exists()) {

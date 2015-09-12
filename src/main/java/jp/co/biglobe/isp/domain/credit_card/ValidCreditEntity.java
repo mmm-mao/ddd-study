@@ -2,8 +2,12 @@ package jp.co.biglobe.isp.domain.credit_card;
 
 import jp.co.biglobe.isp.domain.member.BiglobeId;
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.ToString;
 
+@ToString(includeFieldNames = false)
+@EqualsAndHashCode
 @AllArgsConstructor
 public class ValidCreditEntity implements CreditEntity {
 

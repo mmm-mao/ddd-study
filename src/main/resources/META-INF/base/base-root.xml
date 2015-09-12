@@ -18,18 +18,8 @@
     <!-- DB接続の設定の読込 -->
     <import resource="classpath:META-INF/base/database/data-source.xml"/>
 
-    <!-- AOP設定の読込 -->
-    <import resource="classpath:META-INF/base/aop/aop.xml"/>
-
     <!-- MyBatis設定の読込 -->
     <import resource="classpath:META-INF/base/database/database.xml"/>
 
-    <!-- コントローラ設定の読込 -->
-    <import resource="classpath:META-INF/base/controller/controller.xml"/>
 
-    <!-- リクエストスコープの設定の読込 -->
-    <import resource="classpath:META-INF/base/scope/scope.xml"/>
-
-    <!-- 全プロジェクト共通のcomponent-scanの設定（Autowiredに必要） -->
-    <import resource="classpath:META-INF/base/component-scan.xml"/>
 </beans>

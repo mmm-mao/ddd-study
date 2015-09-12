@@ -13,18 +13,11 @@
     =========================================================================== -->
 
 
-    <!-- DBの例外メッセージを分かりやすくするため、独自のTranslatorをはさむ -->
-    <bean id="mybatisExceptionTranslator"
-          class="jp.co.biglobe.lib.essential.mybatis.BOMyBatisExceptionTranslator">
-        <constructor-arg index="0" ref="dataSource"/>
-        <constructor-arg index="1" value="true"/>
-    </bean>
 
     <bean id="sqlSessionTemplate"
           class="org.mybatis.spring.SqlSessionTemplate">
         <constructor-arg index="0" ref="sqlSessionFactory"/>
         <constructor-arg index="1" value="SIMPLE"/>
-        <constructor-arg index="2" ref="mybatisExceptionTranslator"/>
     </bean>
 
 </beans>

@@ -63,6 +63,7 @@ public class DbConnector {
         }
     }
 
+
     public static void executeQuery(Connection conn, String sql) throws SQLException {
         conn.createStatement().execute(sql);
     }
@@ -156,7 +157,7 @@ public class DbConnector {
                     sql = file.getSql();
                 }
                 LoggerFactory.getLogger("testdayo----").debug(sql);
-                executeQuery(sql);
+                executeQueryThrowException(sql);
             } catch (IOException | SQLException e) {
                 // 何もしない
             }
