@@ -7,13 +7,13 @@ import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
-public interface CreditCardMapper {
+public interface CreditCardQueryMapper {
 
     public void register(
             @Param("validCreditEntity") ValidCreditEntity validCreditEntity
     );
 
-    public ValidCreditEntity クレジットカード番号で検索する(
+    public ValidCreditEntity findByCreditCard(
             @Param("creditCardNumber") CreditCardNumber creditCardNumber
     );
 

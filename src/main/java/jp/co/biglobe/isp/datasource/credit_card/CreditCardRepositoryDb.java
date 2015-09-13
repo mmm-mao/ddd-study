@@ -14,16 +14,16 @@ public class CreditCardRepositoryDb implements CreditCardRepository {
     private クレジットカードのドメイン creditCardDomain;
 
     @Autowired
-    private CreditCardMapper creditCardMapper;
+    private CreditCardQueryMapper creditCardQueryMapper;
 
     @Override
     public CreditEntity クレジットカード番号で検索する(CreditCardNumber creditCardNumber) {
-        return creditCardMapper.クレジットカード番号で検索する(creditCardNumber);
+        return creditCardQueryMapper.findByCreditCard(creditCardNumber);
     }
 
     @Override
     public ValidCreditEntity クレジットカード番号で検索する_存在しなかったらエラー(CreditCardNumber creditCardNumber) {
-        return creditCardMapper.クレジットカード番号で検索する(creditCardNumber);
+        return creditCardQueryMapper.findByCreditCard(creditCardNumber);
     }
 
     @Override
@@ -54,7 +54,7 @@ public class CreditCardRepositoryDb implements CreditCardRepository {
     @Override
     public void 登録する(ValidCreditEntity validCreditCardEntity) {
 
-        creditCardMapper.register(validCreditCardEntity);
+        creditCardQueryMapper.register(validCreditCardEntity);
     }
 
     @Override

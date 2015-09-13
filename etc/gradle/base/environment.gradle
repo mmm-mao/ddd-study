@@ -53,21 +53,3 @@ final class EnvironmentChecker {
     private final String OS_NAME = System.getProperty("os.name");
 }
 
-//if(!envList.find{it == env}){
-//    throw new Exception("There is no environment named '$env'")
-//}
-//
-//if("${env}" != envList[0] && "${env}" != envList[1] && "${env}" != envList[2] && "${env}" != envList[4]){
-//    // warファイルからローカル専用のファイルを削除
-//    processResources{
-//        exclude '**/wifi-spot-development.properties'
-//    }
-//
-//    ext{
-//        localLibraryConfigrations = 'testCompile'
-//    }
-//}else{
-//    ext{
-//        localLibraryConfigrations = 'compile'
-//    }
-//}

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="jp.co.biglobe.isp.datasource.credit_card.CreditCardMapper">
+<mapper namespace="jp.co.biglobe.isp.datasource.credit_card.CreditCardQueryMapper">
 
     <insert id="register">
         INSERT INTO credit_register_event
@@ -22,7 +22,7 @@
 
 
 
-    <select id="クレジットカード番号で検索する" resultMap="CreditEntityMap">
+    <select id="findByCreditCard" resultMap="CreditEntityMap">
         SELECT
         credit_card_number,
         user_id,

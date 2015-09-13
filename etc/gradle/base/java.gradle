@@ -33,8 +33,6 @@ sourceSets {
 
 // gradlew test コマンド実行時の処理の設定
 test {
-    // クラホスのJenkinsのみ実行
-    addPropertiesIfCloudHosting()
 
     // テストする環境で使用する設定ファイルが異なる
     systemProperties 'environment': "${env}"
@@ -47,14 +45,3 @@ test {
 
 }
 
-// クラホスのJenkinsのみ実行
-def addPropertiesIfCloudHosting() {
-    if ("${env}" == 'cloudHosting') {
-        // クラホスのみDBの接続情報は外から渡す
-        def propertiesFile = new File('src/test/resources/properties/environment/cloudHosting.properties')
-        propertiesFile.append("jdbc.url=jdbc:oracle:thin:@(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=${host})(PORT=${port})))(CONNECT_DATA=(SERVICE_NAME=${service_name})))" + System.lineSeparator())
-        propertiesFile.append("jdbc.schema=${schema}" + System.lineSeparator())
-        propertiesFile.append("jdbc.username=${username}" + System.lineSeparator())
-        propertiesFile.append("jdbc.password=${password}" + System.lineSeparator())
-    }
-}

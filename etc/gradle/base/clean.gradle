@@ -1,8 +1,0 @@
-/**
- * gradlew clean コマンド実行時の処理の設定
- */
-
-clean {
-    // "gradle clean"を実行した際に、Tomcat用の出力先も削除対象とする
-    delete << 'src/main/webapp/WEB-INF/classes'
-}

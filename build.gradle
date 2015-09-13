@@ -10,59 +10,17 @@ apply from: file('etc/gradle/base/environment.gradle')
 // プロジェクト固有の設定
 apply from: file('etc/gradle/project.gradle')
 
-// cleanタスクの設定
-apply from: file('etc/gradle/base/clean.gradle')
 
 // Javaのコンパイル＆テストの設定
 apply from: file('etc/gradle/base/java.gradle')
 
-// warタスクの設定
-apply from: file('etc/gradle/base/war.gradle')
-
-// Tomcatの設定
-apply from: file('etc/gradle/base/tomcat.gradle')
-
-// ISP領域向けJava共通ライブラリの設定
+// Java共通ライブラリの設定
 apply from: file('etc/gradle/base/library.gradle')
 
 // Gradleラッパーの設定
 apply from: file('etc/gradle/base/wrapper.gradle')
 
-// Jenkinsの設定
-apply from: file('etc/gradle/base/jenkins.gradle')
 
-// Tomcatプラグインを利用するための定義
-// 参照 https://github.com/bmuschko/gradle-tomcat-plugin
-buildscript {
-    dependencies {
-        classpath files("etc/library/local/gradle-tomcat-plugin-1.0.jar")
-    }
-}
-
-// BOでのオフラインビルドで利用する媒体を集める
-//task releaseSource(type: Zip) {
-//    classifier = 'sources'
-//    from(projectDir) {
-//        exclude '.git'
-//        exclude '.gradle'
-//        exclude '.settings'
-//        exclude 'build'
-//    }
-//    into('repository') {
-//        from configurations.testCompile
-//    }
-//}
-
-// gradlew tomcatRun コマンド実行時の処理
-//if ("${env}" == 'cloudHostingTomcat') {
-//    ext {
-//        tomcatContextPath = 'etc/tomcat/testing/context.xml'
-//    }
-//} else {
-//    ext {
-//        tomcatContextPath = 'etc/tomcat/local/context.xml'
-//    }
-//}
 
 
 
