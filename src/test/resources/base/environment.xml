@@ -16,11 +16,7 @@
           class="jp.co.biglobe.lib.essential.property.PropertyAccessor">
         <property name="locations">
             <list>
-                <!--<value>classpath:properties/environment/${environment}.properties</value>-->
                 <value>classpath:properties/environment/localMac.properties</value>
-                <value>classpath:properties/base/ddl-path.properties</value>
-                <value>classpath:properties/base/scenario.properties</value>
-                <value>classpath:properties/base/identifier.properties</value>
             </list>
         </property>
     </bean>
