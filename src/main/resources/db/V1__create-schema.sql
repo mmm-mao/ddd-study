@@ -3,6 +3,6 @@ CREATE TABLE IF NOT EXISTS credit_register_event (
   user_id VARCHAR2(25) NOT NULL,
   valid_credit_card_status VARCHAR2(25) NOT NULL,
   system_receipt_date_time DATE NOT NULL,
-  CONSTRAINT pk_docomo_change_order_ok PRIMARY KEY(credit_card_number)
+  CONSTRAINT pk_credit_register_event PRIMARY KEY(credit_card_number)
 );
 

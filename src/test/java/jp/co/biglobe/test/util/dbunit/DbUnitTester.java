@@ -31,7 +31,6 @@ public class DbUnitTester {
 
     private TestDataMaker testDataMaker;
 
-    private DatabaseInitializer databaseInitializer;
 
     /**
      * コネクションオブジェクトを取得する
@@ -50,47 +49,6 @@ public class DbUnitTester {
     public void init() {
         this.dbConnector = new DbConnector(dataSource, dbUnitTesterProperty);
         this.testDataMaker = new TestDataMaker(dbConnector);
-        this.databaseInitializer = new DatabaseInitializer(dbConnector, dbUnitTesterProperty);
-
-        // テーブルなどのオブジェクトを作成
-        databaseInitializer.createDbObject();
-    }
-
-    /**
-     * 作成したテーブルをtruncateする
-     *
-     * @throws DatabaseUnitException
-     * @throws SQLException
-     * @throws IOException
-     */
-    public void executeAllClearTableAndSeq() throws DatabaseUnitException, SQLException, IOException {
-        databaseInitializer.executeClearTableAndSeq();
-    }
-
-    /**
-     * 指定したテーブルのテーブルデータを取り出す
-     *
-     * @param tableName   テーブル名
-     * @param sortColumns ソート条件のカラム名
-     * @return
-     */
-    public ITable getActualTable(String tableName, String[] sortColumns) throws Exception {
-        IDatabaseConnection iDatabaseConnection = dbConnector.getDbConnection();
-        ITable actual = iDatabaseConnection.createDataSet().getTable(tableName);
-        iDatabaseConnection.close();
-        return new SortedTable(actual, sortColumns);
-    }
-
-    /**
-     * 期待値のテーブルデータを取得する
-     *
-     * @param expectedFileName 期待値のテーブルデータが定義されたファイルのパス
-     * @param tableName        テーブル名
-     * @param sortColumns      ソート条件のカラム名
-     * @return
-     */
-    public ITable getExpectedTable(String expectedFileName, String tableName, String[] sortColumns) throws Exception {
-        return testDataMaker.getExpectedTable(expectedFileName, tableName,sortColumns);
     }
 
     /**
@@ -98,13 +56,9 @@ public class DbUnitTester {
      * @param sqlByXml
      */
     public void cleanInsertQuery(Map sqlByXml) {
-        List<String> excludeList = new ArrayList<String>();
 
         try {
             for (String tableName : ((Map<String, Map>) sqlByXml).keySet()) {
-                if(excludeList.contains(tableName)) {
-                    throw new SQLException();
-                }
                 Map w = ((Map<String, Map>) sqlByXml).get(tableName);
                 for (Object o : w.keySet()) {
                     Map<String, String> d = (Map<String, String>) w.get(o);
@@ -163,11 +117,4 @@ public class DbUnitTester {
     }
 
 
-    public void sequenceIncrement(String sequenceName) throws SQLException{
-
-
-            String sql = "SELECT " + sequenceName + ".NEXTVAL FROM DUAL";
-            dbConnector.executeQuery(sql);
-
-    }
 }

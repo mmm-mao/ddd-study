@@ -1,6 +1,8 @@
 package jp.co.biglobe.isp.datasource.credit_card;
 
 
+import jp.co.biglobe.isp.datasource.credit_card.assertion.CreditEntityAssert;
+import jp.co.biglobe.isp.datasource.credit_card.fixture.FixtureCredit;
 import jp.co.biglobe.isp.domain.credit_card.CreditCardNumber;
 import jp.co.biglobe.isp.domain.credit_card.CreditCardRepository;
 import jp.co.biglobe.isp.domain.credit_card.ValidCreditCardStatus;
@@ -28,12 +30,13 @@ import static org.junit.Assert.assertThat;
 @WebAppConfiguration
 @ContextConfiguration(locations = {"classpath:context.xml"})
 @Sql(scripts = {
+        "/sql/drop-tables.sql",
         "/db/V1__create-schema.sql",
 }, config = @SqlConfig(encoding = "UTF-8"))
 public class CreditCardRepositoryDbTest {
 
-//    @Autowired
-//    public DbUnitTester tester;
+    @Autowired
+    public DbUnitTester tester;
 
     @Autowired
     private CreditCardRepository creditCardRepository;
@@ -48,7 +51,7 @@ public class CreditCardRepositoryDbTest {
     }
 
     @Test
-    public void aaa(){
+    public void 登録する() throws Exception {
 
         ValidCreditEntity validCreditEntity = new ValidCreditEntity(
                 new CreditCardNumber("111-111-1111"),
@@ -59,8 +62,28 @@ public class CreditCardRepositoryDbTest {
 
         creditCardRepository.登録する(validCreditEntity);
 
-        ValidCreditEntity b = creditCardRepository.クレジットカード番号で検索する_存在しなかったらエラー(new CreditCardNumber("111-111-1111"));
+        CreditEntityAssert creditEntityAssert = new CreditEntityAssert(tester);
+        creditEntityAssert.assertTableWithAllColumns(FixtureCredit.One.登録済み());
 
-        assertThat(validCreditEntity, is(b));
+//        ValidCreditEntity b = creditCardRepository.クレジットカード番号で検索する_存在しなかったらエラー(new CreditCardNumber("111-111-1111"));
+//
+//        assertThat(validCreditEntity, is(b));
+    }
+
+    @Test
+    public void クレジットカード番号で検索する_存在しなかったらエラー() throws Exception {
+
+        ValidCreditEntity expected = new ValidCreditEntity(
+                new CreditCardNumber("111-111-1111"),
+                new BiglobeId("abc12345"),
+                ValidCreditCardStatus.有効
+        );
+
+
+        tester.cleanInsertQuery(FixtureCredit.One.登録済み());
+
+        ValidCreditEntity actual = creditCardRepository.クレジットカード番号で検索する_存在しなかったらエラー(new CreditCardNumber("111-111-1111"));
+
+        assertThat(expected, is(actual));
     }
 }
