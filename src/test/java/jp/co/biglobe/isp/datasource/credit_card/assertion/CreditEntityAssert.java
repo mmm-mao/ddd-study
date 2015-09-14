@@ -19,12 +19,18 @@ public class CreditEntityAssert {
     }
 
     public void assertTableWithAllColumns(Map expectedData) throws Exception {
-        assertReceipt(expectedData);
+        assertRegister(expectedData);
+        assertValidRegister(expectedData);
     }
 
-    private void assertReceipt(Map expectedData) throws Exception {
+    private void assertRegister(Map expectedData) throws Exception {
         DatabaseAssert databaseAssert = new DatabaseAssert(dbUnitTester.getConnection());
         databaseAssert.assertTableWithExcludeColumns(expectedData, FixtureCredit.REGISTER_TABLE_NAME, sortColumns, excludeColumns);
+    }
+
+    private void assertValidRegister(Map expectedData) throws Exception {
+        DatabaseAssert databaseAssert = new DatabaseAssert(dbUnitTester.getConnection());
+        databaseAssert.assertTableWithExcludeColumns(expectedData, FixtureCredit.VALID_TABLE_NAME, sortColumns, excludeColumns);
     }
 
 //    private void assertOk(Map expectedData) throws Exception {

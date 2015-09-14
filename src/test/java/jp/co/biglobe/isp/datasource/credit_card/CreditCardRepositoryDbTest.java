@@ -61,11 +61,8 @@ public class CreditCardRepositoryDbTest {
         creditCardRepository.登録する(validCreditEntity);
 
         CreditEntityAssert creditEntityAssert = new CreditEntityAssert(tester);
-        creditEntityAssert.assertTableWithAllColumns(FixtureCredit.One.登録済み());
+        creditEntityAssert.assertTableWithAllColumns(FixtureCredit.One.有効で登録済み());
 
-//        ValidCreditEntity b = creditCardRepository.クレジットカード番号で検索する_存在しなかったらエラー(new CreditCardNumber("111-111-1111"));
-//
-//        assertThat(validCreditEntity, is(b));
     }
 
     @Test
@@ -78,7 +75,7 @@ public class CreditCardRepositoryDbTest {
         );
 
 
-        tester.cleanInsertQuery(FixtureCredit.One.登録済み());
+        tester.cleanInsertQuery(FixtureCredit.One.有効で登録済み());
 
         ValidCreditEntity actual = creditCardRepository.クレジットカード番号で検索する_存在しなかったらエラー(new CreditCardNumber("111-111-1111"));
 

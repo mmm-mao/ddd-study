@@ -55,6 +55,7 @@ public class CreditCardRepositoryDb implements CreditCardRepository {
     public void 登録する(ValidCreditEntity validCreditCardEntity) {
 
         creditCardQueryMapper.register(validCreditCardEntity);
+        creditCardQueryMapper.validRegister(validCreditCardEntity);
     }
 
     @Override

@@ -8,13 +8,26 @@
         (
         credit_card_number,
         user_id,
-        valid_credit_card_status,
         system_receipt_date_time
         )
         VALUES
         (
         #{validCreditEntity.creditCardNumber.value},
         #{validCreditEntity.biglobeId.value},
+        sysdate
+        )
+    </insert>
+
+    <insert id="validRegister">
+        INSERT INTO credit_valid_event
+        (
+        credit_card_number,
+        valid_credit_card_status,
+        system_receipt_date_time
+        )
+        VALUES
+        (
+        #{validCreditEntity.creditCardNumber.value},
         #{validCreditEntity.validCreditCardStatus},
         sysdate
         )
@@ -24,11 +37,12 @@
 
     <select id="findByCreditCard" resultMap="CreditEntityMap">
         SELECT
-        credit_card_number,
+        register.credit_card_number,
         user_id,
-        valid_credit_card_status
-        FROM credit_register_event
-        where credit_card_number = #{creditCardNumber.value}
+        valid.valid_credit_card_status
+        FROM credit_register_event register
+        LEFT JOIN credit_valid_event valid ON register.credit_card_number = valid.credit_card_number
+        where register.credit_card_number = #{creditCardNumber.value}
         ORDER BY credit_card_number ASC
     </select>
 

@@ -13,6 +13,10 @@ public interface CreditCardQueryMapper {
             @Param("validCreditEntity") ValidCreditEntity validCreditEntity
     );
 
+    public void validRegister(
+            @Param("validCreditEntity") ValidCreditEntity validCreditEntity
+    );
+
     public ValidCreditEntity findByCreditCard(
             @Param("creditCardNumber") CreditCardNumber creditCardNumber
     );
