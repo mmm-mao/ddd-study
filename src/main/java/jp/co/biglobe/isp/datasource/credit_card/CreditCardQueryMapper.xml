@@ -41,7 +41,7 @@
         user_id,
         valid.valid_credit_card_status
         FROM credit_register_event register
-        LEFT JOIN credit_valid_event valid ON register.credit_card_number = valid.credit_card_number
+        LEFT JOIN credit_valid_event_latest_v valid ON register.credit_card_number = valid.credit_card_number
         where register.credit_card_number = #{creditCardNumber.value}
         ORDER BY credit_card_number ASC
     </select>

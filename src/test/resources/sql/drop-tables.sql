@@ -1,4 +1,8 @@
 DROP VIEW IF EXISTS member_profile_register_event_latest_v;
+DROP VIEW IF EXISTS member_mail_address_register_event_latest_v;
+DROP VIEW IF EXISTS auth_event_latest_v;
+DROP VIEW IF EXISTS credit_valid_event_latest_v;
+
 
 DROP TABLE IF EXISTS member_signup_event;
 DROP TABLE IF EXISTS member_withdraw_event;

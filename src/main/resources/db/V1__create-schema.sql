@@ -27,6 +27,15 @@ CREATE TABLE IF NOT EXISTS member_profile_register_event (
   CONSTRAINT pk_member_profile_register_event PRIMARY KEY(profile_register_event_id)
 );
 
+CREATE OR REPLACE VIEW member_profile_register_event_latest_v AS
+ SELECT
+  *
+ FROM member_profile_register_event
+ WHERE profile_register_event_id in (
+  SELECT MAX(profile_register_event_id) AS profile_register_event_id
+  FROM member_profile_register_event
+  GROUP BY user_id
+);
 
 CREATE TABLE IF NOT EXISTS member_mail_address_register_event (
   mail_address_register_event_id VARCHAR2(13) auto_increment NOT NULL,
@@ -36,13 +45,13 @@ CREATE TABLE IF NOT EXISTS member_mail_address_register_event (
   CONSTRAINT pk_member_mail_address_register_event PRIMARY KEY(mail_address_register_event_id)
 );
 
-CREATE OR REPLACE VIEW member_profile_register_event_latest_v AS
+CREATE OR REPLACE VIEW member_mail_address_register_event_latest_v AS
  SELECT
   *
- FROM member_profile_register_event
- WHERE profile_register_event_id in (
-  SELECT MAX(profile_register_event_id) AS profile_register_event_id
-  FROM member_profile_register_event
+ FROM member_mail_address_register_event
+ WHERE mail_address_register_event_id in (
+  SELECT MAX(mail_address_register_event_id) AS mail_address_register_event_id
+  FROM member_mail_address_register_event
   GROUP BY user_id
 );
 
@@ -56,6 +65,15 @@ CREATE TABLE IF NOT EXISTS auth_event (
   CONSTRAINT pk_auth_event PRIMARY KEY(auth_event_id)
 );
 
+CREATE OR REPLACE VIEW auth_event_latest_v AS
+ SELECT
+  *
+ FROM auth_event
+ WHERE auth_event_id in (
+  SELECT MAX(auth_event_id) AS auth_event_id
+  FROM auth_event
+  GROUP BY user_id
+);
 
 -- コース
 
@@ -86,4 +104,13 @@ CREATE TABLE IF NOT EXISTS credit_valid_event (
   CONSTRAINT pk_credit_valid_event PRIMARY KEY(credit_valid_event_id)
 );
 
+CREATE OR REPLACE VIEW credit_valid_event_latest_v AS
+ SELECT
+  *
+ FROM credit_valid_event
+ WHERE credit_valid_event_id in (
+  SELECT MAX(credit_valid_event_id) AS credit_valid_event_id
+  FROM credit_valid_event
+  GROUP BY credit_card_number
+);
 
