@@ -13,7 +13,7 @@ public class BIGLOBEIDとBIGLOBEパスワードを発番するクラス implemen
 
     @Override
     public String BIGLOBEパスワードを発番するメソッド() {
-        return "!\"#$%&'()0=~|";
+        return "password";
     }
 
 }

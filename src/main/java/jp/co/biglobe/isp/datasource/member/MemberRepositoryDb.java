@@ -14,13 +14,18 @@ public class MemberRepositoryDb implements MemberRepository {
     @Autowired
     private BIGLOBEIDとBIGLOBEパスワードのドメイン biglobeidとBIGLOBEパスワードのドメイン;
 
+    @Autowired
+    private MemberQueryMapper memberQueryMapper;
+
     @Override
     public UserId 識別子を作成する(){
         return new UserId(biglobeidとBIGLOBEパスワードのドメイン.BIGLOBEIDを発番するメソッド());
     }
 
     @Override
-    public void 入会する(MemberEntity memberEntity){}
+    public void 入会する(MemberEntity memberEntity){
+        memberQueryMapper.signUp(memberEntity);
+    }
 
     public void 退会する(MemberEntity memberEntity){}
 

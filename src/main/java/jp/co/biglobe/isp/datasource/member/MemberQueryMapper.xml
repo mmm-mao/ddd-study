@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="jp.co.biglobe.isp.datasource.member.MemberQueryMapper">
+
+    <insert id="signUp">
+        INSERT INTO member_sign_up_event
+        (
+        user_id,
+        sign_up_date,
+        system_receipt_date_time
+        )
+        VALUES
+        (
+        #{memberEntity.userId.value},
+        #{memberEntity.lifeCycle.signUp.signUpDate.value},
+        sysdate
+        )
+    </insert>
+
+
+</mapper>
