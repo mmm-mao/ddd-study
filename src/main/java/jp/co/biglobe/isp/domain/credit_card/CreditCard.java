@@ -1,6 +1,5 @@
 package jp.co.biglobe.isp.domain.credit_card;
 
-import jp.co.biglobe.isp.domain.member.BiglobeId;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 

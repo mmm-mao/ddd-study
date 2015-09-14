@@ -1,7 +1,7 @@
 package jp.co.biglobe.isp.domain.credit_card;
 
 
-import jp.co.biglobe.isp.domain.member.BiglobeId;
+import jp.co.biglobe.isp.domain.member.UserId;
 
 public interface CreditCardRepository {
 
@@ -9,7 +9,7 @@ public interface CreditCardRepository {
 
     public ValidCreditEntity クレジットカード番号で検索する_存在しなかったらエラー(CreditCardNumber creditCardNumber);
 
-    public ValidCreditEntity _biglobeIdで検索する(BiglobeId biglobeId);
+    public ValidCreditEntity _biglobeIdで検索する(UserId userId);
 
     public ValidCreditCardStatus 有効かチェックする(CreditCard creditCard);
 
@@ -21,9 +21,9 @@ public interface CreditCardRepository {
 
     public void 変更する(ValidCreditEntity validCreditCardEntity);
 
-    public void 送付されてきたクレジットカード情報が無効だと通知する(BiglobeId biglobeId);
+    public void 送付されてきたクレジットカード情報が無効だと通知する(UserId userId);
 
-    public void 無効になったことを通知する(BiglobeId biglobeId);
+    public void 無効になったことを通知する(UserId userId);
 
 
 }

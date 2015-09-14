@@ -21,7 +21,7 @@ public class CreditCardInValidService {
 
         creditCardRepository.無効にする(validCreditCardEntity.無効にする());
 
-        creditCardRepository.無効になったことを通知する(validCreditCardEntity.getBiglobeId());
+        creditCardRepository.無効になったことを通知する(validCreditCardEntity.getUserId());
 
     }
 

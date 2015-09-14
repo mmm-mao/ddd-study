@@ -7,7 +7,7 @@ import jp.co.biglobe.isp.domain.credit_card.CreditCardNumber;
 import jp.co.biglobe.isp.domain.credit_card.CreditCardRepository;
 import jp.co.biglobe.isp.domain.credit_card.ValidCreditCardStatus;
 import jp.co.biglobe.isp.domain.credit_card.ValidCreditEntity;
-import jp.co.biglobe.isp.domain.member.BiglobeId;
+import jp.co.biglobe.isp.domain.member.UserId;
 import jp.co.biglobe.test.util.dbunit.DbUnitTester;
 import org.dbunit.DatabaseUnitException;
 import org.junit.Before;
@@ -53,7 +53,7 @@ public class CreditCardRepositoryDbTest {
 
         ValidCreditEntity validCreditEntity = new ValidCreditEntity(
                 new CreditCardNumber("111-111-1111"),
-                new BiglobeId("abc12345"),
+                new UserId("abc12345"),
                 ValidCreditCardStatus.有効
         );
 
@@ -70,7 +70,7 @@ public class CreditCardRepositoryDbTest {
 
         ValidCreditEntity expected = new ValidCreditEntity(
                 new CreditCardNumber("111-111-1111"),
-                new BiglobeId("abc12345"),
+                new UserId("abc12345"),
                 ValidCreditCardStatus.有効
         );
 

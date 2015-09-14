@@ -33,9 +33,9 @@ public class NikoNikoAuthService {
 
         biglobeAuthService.サービス利用不可をNGとして認証する(validAuth);
 
-        MemberEntity memberEntity = memberRepository.BiglobeIdで検索する(validAuth.getBiglobeId());
+        MemberEntity memberEntity = memberRepository.BiglobeIdで検索する(validAuth.getUserId());
 
-        Course course = courseRepository.BiglobeIdで検索する(validAuth.getBiglobeId());
+        Course course = courseRepository.BiglobeIdで検索する(validAuth.getUserId());
 
 
         if(course.ニコニコ動画認証OKか(memberEntity)){

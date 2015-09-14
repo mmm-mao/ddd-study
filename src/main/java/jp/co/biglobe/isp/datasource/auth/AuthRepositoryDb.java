@@ -4,7 +4,7 @@ package jp.co.biglobe.isp.datasource.auth;
 import jp.co.biglobe.isp.domain.auth.ValidAuth;
 import jp.co.biglobe.isp.domain.auth.AuthRepository;
 import jp.co.biglobe.isp.domain.auth.BiglobePassword;
-import jp.co.biglobe.isp.domain.member.BiglobeId;
+import jp.co.biglobe.isp.domain.member.UserId;
 import jp.co.biglobe.outsource.domain.BIGLOBEIDとBIGLOBEパスワードのドメイン;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -27,7 +27,7 @@ public class AuthRepositoryDb implements AuthRepository {
 
     @Override
     public ValidAuth _Idとパスワードで検索する(ValidAuth validAuth){
-        return new ValidAuth(new BiglobeId("abc12345"), new BiglobePassword("adfefwrfew"));
+        return new ValidAuth(new UserId("abc12345"), new BiglobePassword("adfefwrfew"));
     }
 
 }

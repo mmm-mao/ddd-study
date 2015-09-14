@@ -4,7 +4,7 @@ import jp.co.biglobe.isp.domain.auth.ValidAuth;
 import jp.co.biglobe.isp.domain.course.Course;
 import jp.co.biglobe.isp.domain.course.CourseRepository;
 import jp.co.biglobe.isp.domain.credit_card.CreditCardRepository;
-import jp.co.biglobe.isp.domain.member.BiglobeId;
+import jp.co.biglobe.isp.domain.member.UserId;
 import jp.co.biglobe.isp.domain.member.MemberEntity;
 import jp.co.biglobe.isp.domain.member.MemberRepository;
 import jp.co.biglobe.isp.service.auth.BiglobeAuthService;
@@ -32,9 +32,9 @@ public class WithdrawalService {
 
         biglobeAuthService.サービス利用不可をOKとして認証する(validAuth);
 
-        MemberEntity memberEntity = memberRepository.BiglobeIdで検索する(validAuth.getBiglobeId());
+        MemberEntity memberEntity = memberRepository.BiglobeIdで検索する(validAuth.getUserId());
 
-        Course course = courseRepository.BiglobeIdで検索する(validAuth.getBiglobeId());
+        Course course = courseRepository.BiglobeIdで検索する(validAuth.getUserId());
 
         return new WithdrawalConfirmContainer(memberEntity, course);
     }
@@ -50,7 +50,7 @@ public class WithdrawalService {
 
         検証する(validAuth);
 
-        退会する(validAuth.getBiglobeId());
+        退会する(validAuth.getUserId());
 
     }
 
@@ -58,15 +58,15 @@ public class WithdrawalService {
 
         biglobeAuthService.サービス利用不可をOKとして認証する(validAuth);
 
-        MemberEntity memberEntity = memberRepository.BiglobeIdで検索する(validAuth.getBiglobeId());
+        MemberEntity memberEntity = memberRepository.BiglobeIdで検索する(validAuth.getUserId());
 
         if(!memberEntity.退会できるか()){
             throw new RuntimeException("既に退会申し込み済みです");
         }
     }
 
-    private void 退会する(BiglobeId biglobeId){
-        MemberEntity memberEntity = memberRepository.BiglobeIdで検索する(biglobeId);
+    private void 退会する(UserId userId){
+        MemberEntity memberEntity = memberRepository.BiglobeIdで検索する(userId);
         memberRepository.退会する(memberEntity.退会する());
     }
 

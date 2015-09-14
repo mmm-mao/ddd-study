@@ -1,8 +1,7 @@
 package jp.co.biglobe.isp.domain.course;
 
 
-import jp.co.biglobe.isp.domain.credit_card.*;
-import jp.co.biglobe.isp.domain.member.BiglobeId;
+import jp.co.biglobe.isp.domain.member.UserId;
 
 public interface CourseRepository {
 
@@ -10,6 +9,6 @@ public interface CourseRepository {
 
     public void 変更予約する(Course course);
 
-    public Course BiglobeIdで検索する(BiglobeId biglobeId);
+    public Course BiglobeIdで検索する(UserId userId);
 
 }

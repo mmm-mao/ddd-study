@@ -1,8 +1,6 @@
 package jp.co.biglobe.isp.domain.auth;
 
-import jp.co.biglobe.isp.domain.credit_card.CreditCardNumber;
-import jp.co.biglobe.isp.domain.credit_card.ValidCreditCardStatus;
-import jp.co.biglobe.isp.domain.member.BiglobeId;
+import jp.co.biglobe.isp.domain.member.UserId;
 import jp.co.biglobe.isp.domain.member.MemberEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,7 +9,7 @@ import lombok.Getter;
 public class ValidAuth implements Auth{
 
     @Getter
-    private final BiglobeId biglobeId;
+    private final UserId userId;
 
     private final BiglobePassword biglobePassword;
 

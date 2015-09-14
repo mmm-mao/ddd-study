@@ -7,7 +7,7 @@ import lombok.ToString;
 @ToString(includeFieldNames = false)
 @EqualsAndHashCode
 @AllArgsConstructor
-public class BiglobeId {
+public class UserId {
 
     private final String value;
 

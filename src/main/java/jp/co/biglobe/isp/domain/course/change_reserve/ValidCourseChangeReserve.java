@@ -1,8 +1,5 @@
 package jp.co.biglobe.isp.domain.course.change_reserve;
 
-import jp.co.biglobe.isp.domain.credit_card.CreditCardNumber;
-import jp.co.biglobe.isp.domain.credit_card.ValidCreditCardStatus;
-import jp.co.biglobe.isp.domain.member.BiglobeId;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor

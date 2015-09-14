@@ -4,7 +4,7 @@ import jp.co.biglobe.isp.domain.auth.ValidAuth;
 import jp.co.biglobe.isp.domain.course.Course;
 import jp.co.biglobe.isp.domain.course.CourseRepository;
 import jp.co.biglobe.isp.domain.course.change_reserve.ChangeReserveCourse;
-import jp.co.biglobe.isp.domain.member.BiglobeId;
+import jp.co.biglobe.isp.domain.member.UserId;
 import jp.co.biglobe.isp.domain.member.MemberEntity;
 import jp.co.biglobe.isp.domain.member.MemberRepository;
 import jp.co.biglobe.isp.service.auth.BiglobeAuthService;
@@ -28,7 +28,7 @@ public class CourseChangeReserveService {
 
         検証する(validAuth, changeReserveCourse);
 
-        コース変更予約する(validAuth.getBiglobeId(), changeReserveCourse);
+        コース変更予約する(validAuth.getUserId(), changeReserveCourse);
 
 
     }
@@ -37,9 +37,9 @@ public class CourseChangeReserveService {
 
         biglobeAuthService.サービス利用不可をNGとして認証する(validAuth);
 
-        MemberEntity memberEntity = memberRepository.BiglobeIdで検索する(validAuth.getBiglobeId());
+        MemberEntity memberEntity = memberRepository.BiglobeIdで検索する(validAuth.getUserId());
 
-        Course course = courseRepository.BiglobeIdで検索する(validAuth.getBiglobeId());
+        Course course = courseRepository.BiglobeIdで検索する(validAuth.getUserId());
 
         if(course.コース変更予約できるか(memberEntity, changeReserveCourse)){
             return;
@@ -51,9 +51,9 @@ public class CourseChangeReserveService {
     }
 
 
-    private void コース変更予約する(BiglobeId biglobeId, ChangeReserveCourse changeReserveCourse){
+    private void コース変更予約する(UserId userId, ChangeReserveCourse changeReserveCourse){
 
-        Course course = courseRepository.BiglobeIdで検索する(biglobeId);
+        Course course = courseRepository.BiglobeIdで検索する(userId);
         courseRepository.変更予約する(course.コース変更予約する(changeReserveCourse));
     }
 
