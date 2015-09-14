@@ -1,9 +1,9 @@
 -- 会員
-CREATE TABLE IF NOT EXISTS member_signup_event (
+CREATE TABLE IF NOT EXISTS member_sign_up_event (
   user_id VARCHAR2(8) NOT NULL,
-  signup_date DATE NOT NULL,
+  sign_up_date DATE NOT NULL,
   system_receipt_date_time TIMESTAMP NOT NULL,
-  CONSTRAINT pk_member_signup_event PRIMARY KEY(user_id)
+  CONSTRAINT pk_member_sign_up_event PRIMARY KEY(user_id)
 );
 
 CREATE TABLE IF NOT EXISTS member_withdraw_event (

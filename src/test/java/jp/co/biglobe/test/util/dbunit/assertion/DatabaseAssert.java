@@ -48,6 +48,15 @@ public class DatabaseAssert {
         assertThat(actualExclude, is(tableOf(expectedExclude)));
     }
 
+    public void assertTableWithExcludeColumnsOrNoCount(String tableName, Map fixture, Map expected, String[] sortColumns, String[] excludeColumns) throws Exception {
+
+        if (expected.containsKey(tableName)) {
+            assertTableWithExcludeColumns(expected, tableName, sortColumns, excludeColumns);
+        } else {
+            assertTableNoCount(fixture, tableName);
+        }
+    }
+
     public ITable getActualTableForNoCount(String tableName) throws Exception {
         ITable actual = iDatabaseConnection.createDataSet().getTable(tableName);
         iDatabaseConnection.close();
