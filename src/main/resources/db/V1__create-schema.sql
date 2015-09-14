@@ -42,18 +42,20 @@ CREATE TABLE IF NOT EXISTS auth_event (
   auth_event_id VARCHAR2(13) auto_increment NOT NULL,
   user_id VARCHAR2(8) NOT NULL,
   user_password VARCHAR2(128) NOT NULL,
+  system_receipt_date_time TIMESTAMP NOT NULL,
   CONSTRAINT pk_auth_event PRIMARY KEY(auth_event_id)
 );
 
 
 -- コース
 
-CREATE TABLE IF NOT EXISTS course_apply_event (
-  course_apply_event_id VARCHAR2(13) auto_increment NOT NULL,
+CREATE TABLE IF NOT EXISTS course_receipt_event (
+  course_receipt_event_id VARCHAR2(13) auto_increment NOT NULL,
   user_id VARCHAR2(8) NOT NULL,
   course VARCHAR2(50) NOT NULL,
   switching_date DATE NOT NULL,
-  CONSTRAINT pk_course_apply_event PRIMARY KEY(course_apply_event_id)
+  system_receipt_date_time TIMESTAMP NOT NULL,
+  CONSTRAINT pk_course_receipt_event PRIMARY KEY(course_receipt_event_id)
 );
 
 
