@@ -1,7 +1,7 @@
 package jp.co.biglobe.isp.datasource.credit_card;
 
 
-import jp.co.biglobe.isp.datasource.credit_card.assertion.CreditEntityAssert;
+import jp.co.biglobe.isp.datasource.credit_card.assertion.CreditAssert;
 import jp.co.biglobe.isp.datasource.credit_card.fixture.FixtureCredit;
 import jp.co.biglobe.isp.domain.credit_card.CreditCardNumber;
 import jp.co.biglobe.isp.domain.credit_card.CreditCardRepository;
@@ -60,8 +60,8 @@ public class CreditCardRepositoryDbTest {
 
         creditCardRepository.登録する(validCreditEntity);
 
-        CreditEntityAssert creditEntityAssert = new CreditEntityAssert(tester);
-        creditEntityAssert.assertTableWithAllColumns(FixtureCredit.One.有効で登録済み());
+        CreditAssert creditAssert = new CreditAssert(tester);
+        creditAssert.assertTableWithAllColumns(FixtureCredit.One.有効で登録済み());
 
     }
 

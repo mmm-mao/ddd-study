@@ -6,7 +6,7 @@ import jp.co.biglobe.test.util.dbunit.assertion.DatabaseAssert;
 
 import java.util.Map;
 
-public class CreditEntityAssert {
+public class CreditAssert {
 
     private DbUnitTester dbUnitTester;
 
@@ -14,7 +14,7 @@ public class CreditEntityAssert {
 
     String[] excludeColumns = new String[]{FixtureCredit.SYSTEM_RECEIPT_DATE_TIME};
 
-    public CreditEntityAssert(DbUnitTester dbUnitTester) {
+    public CreditAssert(DbUnitTester dbUnitTester) {
         this.dbUnitTester = dbUnitTester;
     }
 
@@ -33,11 +33,6 @@ public class CreditEntityAssert {
         databaseAssert.assertTableWithExcludeColumns(expectedData, FixtureCredit.VALID_TABLE_NAME, sortColumns, excludeColumns);
     }
 
-//    private void assertOk(Map expectedData) throws Exception {
-//        DatabaseAssert databaseAssert = new DatabaseAssert(dbUnitTester.getConnection());
-//        databaseAssert.assertTableWithExcludeColumnsOrNoCount(
-//                FixtureNewOrderEntity.OK_TABLE_NAME, FixtureNewOrderEntity.Nothing.受付結果OKイベントなし(), expectedData, sortColumns, excludeColumns);
-//    }
 
 
 }
