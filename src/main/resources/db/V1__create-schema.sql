@@ -27,6 +27,7 @@ CREATE TABLE IF NOT EXISTS member_profile_register_event (
   CONSTRAINT pk_member_profile_register_event PRIMARY KEY(profile_register_event_id)
 );
 
+
 CREATE TABLE IF NOT EXISTS member_mail_address_register_event (
   mail_address_register_event_id VARCHAR2(13) auto_increment NOT NULL,
   user_id VARCHAR2(8) NOT NULL,
@@ -35,6 +36,15 @@ CREATE TABLE IF NOT EXISTS member_mail_address_register_event (
   CONSTRAINT pk_member_mail_address_register_event PRIMARY KEY(mail_address_register_event_id)
 );
 
+CREATE OR REPLACE VIEW member_profile_register_event_latest_v AS
+ SELECT
+  *
+ FROM member_profile_register_event
+ WHERE profile_register_event_id in (
+  SELECT MAX(profile_register_event_id) AS profile_register_event_id
+  FROM member_profile_register_event
+  GROUP BY user_id
+);
 
 -- 認証
 

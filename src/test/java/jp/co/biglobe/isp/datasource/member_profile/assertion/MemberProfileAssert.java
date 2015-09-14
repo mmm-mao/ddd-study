@@ -10,7 +10,9 @@ public class MemberProfileAssert {
 
     private DbUnitTester dbUnitTester;
 
-    private final String[] sortColumns = new String[]{FixtureMemberProfile.EVENT_ID};
+    private final String[] sortProfileColumns = new String[]{FixtureMemberProfile.REGISTER_EVENT_ID};
+
+    private final String[] sortMailAddressColumns = new String[]{FixtureMemberProfile.MAIL_ADDRESS_REGISTER_EVENT_ID};
 
     String[] excludeColumns = new String[]{FixtureMemberProfile.SYSTEM_RECEIPT_DATE_TIME};
 
@@ -19,12 +21,17 @@ public class MemberProfileAssert {
     }
 
     public void assertTableWithAllColumns(Map expectedData) throws Exception {
-        assertRegister(expectedData);
+        assertProfileRegister(expectedData);
     }
 
-    private void assertRegister(Map expectedData) throws Exception {
+    private void assertProfileRegister(Map expectedData) throws Exception {
         DatabaseAssert databaseAssert = new DatabaseAssert(dbUnitTester.getConnection());
-        databaseAssert.assertTableWithExcludeColumns(expectedData, FixtureMemberProfile.REGISTER_TABLE_NAME, sortColumns, excludeColumns);
+        databaseAssert.assertTableWithExcludeColumns(expectedData, FixtureMemberProfile.REGISTER_TABLE_NAME, sortProfileColumns, excludeColumns);
+    }
+
+    private void assertMailAddressRegister(Map expectedData) throws Exception {
+        DatabaseAssert databaseAssert = new DatabaseAssert(dbUnitTester.getConnection());
+        databaseAssert.assertTableWithExcludeColumns(expectedData, FixtureMemberProfile.MAIL_ADDRESS_REGISTER_TABLE_NAME, sortMailAddressColumns, excludeColumns);
     }
 
 

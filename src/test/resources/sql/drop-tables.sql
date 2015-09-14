@@ -1,3 +1,5 @@
+DROP VIEW IF EXISTS member_profile_register_event_latest_v;
+
 DROP TABLE IF EXISTS member_signup_event;
 DROP TABLE IF EXISTS member_withdraw_event;
 DROP TABLE IF EXISTS member_profile_register_event;

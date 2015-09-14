@@ -3,15 +3,13 @@ package jp.co.biglobe.isp.datasource.member_profile.fixture
 import jp.co.biglobe.test.util.dbunit.xml.Fixture
 import jp.co.biglobe.test.util.dbunit.xml.FixtureChangeTarget
 
-import java.time.LocalDate
-import java.time.YearMonth
-import java.time.format.DateTimeFormatter
-
 class FixtureMemberProfile {
 
     public static final String REGISTER_TABLE_NAME = "member_profile_register_event"
+    public static final String MAIL_ADDRESS_REGISTER_TABLE_NAME = "member_mail_address_register_event"
 
-    public static final String EVENT_ID = "profile_register_event_id"
+    public static final String REGISTER_EVENT_ID = "profile_register_event_id"
+    public static final String MAIL_ADDRESS_REGISTER_EVENT_ID = "mail_address_register_event_id"
     public static final String SYSTEM_RECEIPT_DATE_TIME = "system_receipt_date_time"
 
     public static class RegisterInitialData {
@@ -25,7 +23,7 @@ class FixtureMemberProfile {
         public static final String ADDRESS = "address"
 
         private final static Map defaultValue = [
-                (EVENT_ID) : 1,
+                (REGISTER_EVENT_ID) : 1,
                 (USER_ID): "abc12345",
                 (NAME): "テスト　太郎",
                 (NAME_KANA): "てすと　たろう",
@@ -33,6 +31,20 @@ class FixtureMemberProfile {
                 (BIRTHDAY): "1980-01-01",
                 (ZIP_CODE): "251-0043",
                 (ADDRESS): "神奈川県川崎幸区２−９−１５",
+                (SYSTEM_RECEIPT_DATE_TIME)  : "2014-01-01 00:00:00",
+        ]
+
+    }
+
+    public static class MailAddressRegisterInitialData {
+
+        public static final String USER_ID = "user_id"
+        public static final String MAIL_ADDRESS = "mail_address"
+
+        private final static Map defaultValue = [
+                (REGISTER_EVENT_ID) : 1,
+                (USER_ID): "abc12345",
+                (MAIL_ADDRESS): "test-mail@test.co.jp",
                 (SYSTEM_RECEIPT_DATE_TIME)  : "2014-01-01 00:00:00",
         ]
 
@@ -48,13 +60,23 @@ class FixtureMemberProfile {
 
     public static class Default {
 
-        public static Map 登録済み(int rowCount, int eventId) {
+        public static Map プロフィール登録済み(int rowCount, int eventId) {
             Map<FixtureChangeTarget, String> map = new HashMap<FixtureChangeTarget, String>()
-            map.put(new FixtureChangeTarget(REGISTER_TABLE_NAME, rowCount, EVENT_ID), eventId)
+            map.put(new FixtureChangeTarget(REGISTER_TABLE_NAME, rowCount, REGISTER_EVENT_ID), eventId)
 
             return Fixture.changeValueListForString([(REGISTER_TABLE_NAME): [(rowCount): RegisterInitialData.defaultValue]], map)
 
         }
+
+        public static Map メールアドレス登録済み(int rowCount, int eventId) {
+            Map<FixtureChangeTarget, String> map = new HashMap<FixtureChangeTarget, String>()
+            map.put(new FixtureChangeTarget(MAIL_ADDRESS_REGISTER_TABLE_NAME, rowCount, MAIL_ADDRESS_REGISTER_EVENT_ID), eventId)
+
+            return Fixture.changeValueListForString([(MAIL_ADDRESS_REGISTER_TABLE_NAME): [(rowCount): MailAddressRegisterInitialData.defaultValue]], map)
+
+        }
+
+
 
     }
 
@@ -65,7 +87,7 @@ class FixtureMemberProfile {
         private static int eventId = 1;
 
         public static Map 登録済み() {
-            return Default.登録済み(oneRowCount, eventId,)
+            return Default.プロフィール登録済み(oneRowCount, eventId,) + Default.メールアドレス登録済み(oneRowCount, eventId)
         }
 
 
