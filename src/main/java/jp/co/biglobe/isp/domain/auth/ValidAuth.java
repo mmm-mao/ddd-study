@@ -3,8 +3,12 @@ package jp.co.biglobe.isp.domain.auth;
 import jp.co.biglobe.isp.domain.member.UserId;
 import jp.co.biglobe.isp.domain.member.MemberEntity;
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.ToString;
 
+@ToString(includeFieldNames = false)
+@EqualsAndHashCode
 @AllArgsConstructor
 public class ValidAuth implements Auth{
 

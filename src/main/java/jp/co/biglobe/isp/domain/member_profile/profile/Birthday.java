@@ -10,7 +10,15 @@ public class Birthday {
     private final LocalDate value;
 
     public boolean _20歳未満か(){
+        if(年齢を計算する() < 20){
+            return true;
+        };
+
         return false;
+    }
+
+    private int 年齢を計算する(){
+        return DateUtil.指定された年月日から経過年数を計算する(value);
     }
 
 }

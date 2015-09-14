@@ -11,6 +11,8 @@ import jp.co.biglobe.isp.datasource.member.assertion.MemberAssert;
 import jp.co.biglobe.isp.datasource.member.fixture.FixtureMember;
 import jp.co.biglobe.isp.datasource.member_profile.assertion.MemberProfileAssert;
 import jp.co.biglobe.isp.datasource.member_profile.fixture.FixtureMemberProfile;
+import jp.co.biglobe.isp.domain.auth.UserPassword;
+import jp.co.biglobe.isp.domain.auth.ValidAuth;
 import jp.co.biglobe.isp.domain.course.CourseName;
 import jp.co.biglobe.isp.domain.course.CurrentCourse;
 import jp.co.biglobe.isp.domain.credit_card.*;
@@ -80,8 +82,9 @@ public class SignUpServiceTest {
         );
 
 
-        signUpService.受け付ける(signUpRequest);
+        ValidAuth actual =  signUpService.受け付ける(signUpRequest);
 
+        assertThat(actual, is(new ValidAuth(new UserId("abc12345"), new UserPassword("password"))));
 
         MemberAssert memberAssert = new MemberAssert(tester);
         memberAssert.assertTableWithAllColumns(FixtureMember.One.入会済み());
@@ -99,5 +102,31 @@ public class SignUpServiceTest {
         authAssert.assertTableWithAllColumns(FixtureAuth.One.登録済み());
     }
 
+
+    @Test(expected = UnsupportedOperationException.class)
+    public void _２０歳未満のため審査NG() throws Exception {
+
+        SignUpRequest signUpRequest = new SignUpRequest(
+                new Profile(
+                        new Name("テスト　太郎"),
+                        new NameKana("てすと　たろう"),
+                        Gender.男性,
+                        new Birthday(LocalDate.of(2015, 1, 1)),
+                        new Address(new ZipCode("251-0043"), new AddressText("神奈川県川崎幸区２−９−１５")),
+                        new PhoneNumber(new ContractPhoneNumber("090-1234-5678"), new DaytimePhoneNumber("090-1234-5678"))
+                ),
+                new CreditCard(
+                        new CreditCardNumber("111-111-1111"),
+                        new EffectiveMonth(YearMonth.now()),
+                        new SecurityNumber(123456789)
+                ),
+                new CurrentCourse(CourseName.ベーシック),
+                new HopeMailAddress("test-mail")
+        );
+
+
+        signUpService.受け付ける(signUpRequest);
+
+    }
 
 }

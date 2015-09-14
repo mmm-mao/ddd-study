@@ -14,11 +14,11 @@ public class RealTimeReview {
     public void 検証する(){
 
         if(!creditCardRegisterStatus.登録できるか()){
-            throw new RuntimeException("クレジットカードが無効");
+            throw new UnsupportedOperationException("クレジットカードが無効");
         }
 
         if(profile._20歳未満か()){
-            throw new RuntimeException("20歳未満");
+            throw new UnsupportedOperationException("20歳未満");
         }
 
         return;
