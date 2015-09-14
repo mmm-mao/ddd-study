@@ -21,6 +21,8 @@ class FixtureMemberProfile {
         public static final String BIRTHDAY = "birthday"
         public static final String ZIP_CODE = "zip_code"
         public static final String ADDRESS = "address"
+        public static final String CONTRACT_PHONE_NUMBER = "contract_phone_number"
+        public static final String DAYTIME_PHONE_NUMBER = "daytime_phone_number"
 
         private final static Map defaultValue = [
                 (REGISTER_EVENT_ID) : 1,
@@ -31,6 +33,8 @@ class FixtureMemberProfile {
                 (BIRTHDAY): "1980-01-01",
                 (ZIP_CODE): "251-0043",
                 (ADDRESS): "神奈川県川崎幸区２−９−１５",
+                (CONTRACT_PHONE_NUMBER): "090-1234-5678",
+                (DAYTIME_PHONE_NUMBER): "090-1234-5678",
                 (SYSTEM_RECEIPT_DATE_TIME)  : "2014-01-01 00:00:00",
         ]
 

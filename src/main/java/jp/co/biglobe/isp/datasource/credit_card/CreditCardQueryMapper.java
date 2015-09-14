@@ -9,17 +9,16 @@ import java.util.List;
 
 public interface CreditCardQueryMapper {
 
-    public void register(
+    public void _register(
             @Param("validCreditEntity") ValidCreditEntity validCreditEntity
     );
 
-    public void validRegister(
+    public void _validRegister(
             @Param("validCreditEntity") ValidCreditEntity validCreditEntity
     );
 
-    public ValidCreditEntity findByCreditCard(
+    public ValidCreditEntity _findByCreditCard(
             @Param("creditCardNumber") CreditCardNumber creditCardNumber
     );
 
-    public List<CreditEntity> findAll();
 }

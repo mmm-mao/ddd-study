@@ -18,7 +18,7 @@ public class CreditCardRepositoryDb implements CreditCardRepository {
 
     @Override
     public CreditEntity クレジットカード番号で検索する(CreditCardNumber creditCardNumber) {
-        ValidCreditEntity validCreditEntity = creditCardQueryMapper.findByCreditCard(creditCardNumber);
+        ValidCreditEntity validCreditEntity = creditCardQueryMapper._findByCreditCard(creditCardNumber);
 
         if(validCreditEntity == null){
             return new NotExistCreditEntity();
@@ -29,7 +29,7 @@ public class CreditCardRepositoryDb implements CreditCardRepository {
 
     @Override
     public ValidCreditEntity クレジットカード番号で検索する_存在しなかったらエラー(CreditCardNumber creditCardNumber) {
-        return creditCardQueryMapper.findByCreditCard(creditCardNumber);
+        return creditCardQueryMapper._findByCreditCard(creditCardNumber);
     }
 
     @Override
@@ -60,8 +60,8 @@ public class CreditCardRepositoryDb implements CreditCardRepository {
     @Override
     public void 登録する(ValidCreditEntity validCreditCardEntity) {
 
-        creditCardQueryMapper.register(validCreditCardEntity);
-        creditCardQueryMapper.validRegister(validCreditCardEntity);
+        creditCardQueryMapper._register(validCreditCardEntity);
+        creditCardQueryMapper._validRegister(validCreditCardEntity);
     }
 
     @Override

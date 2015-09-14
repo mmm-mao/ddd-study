@@ -3,7 +3,7 @@
 
 <mapper namespace="jp.co.biglobe.isp.datasource.member.MemberQueryMapper">
 
-    <insert id="signUp">
+    <insert id="_signUp">
         INSERT INTO member_sign_up_event
         (
         user_id,

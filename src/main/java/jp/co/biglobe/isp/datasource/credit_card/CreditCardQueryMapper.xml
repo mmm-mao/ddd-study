@@ -3,7 +3,7 @@
 
 <mapper namespace="jp.co.biglobe.isp.datasource.credit_card.CreditCardQueryMapper">
 
-    <insert id="register">
+    <insert id="_register">
         INSERT INTO credit_register_event
         (
         credit_card_number,
@@ -18,7 +18,7 @@
         )
     </insert>
 
-    <insert id="validRegister">
+    <insert id="_validRegister">
         INSERT INTO credit_valid_event
         (
         credit_card_number,
@@ -35,7 +35,7 @@
 
 
 
-    <select id="findByCreditCard" resultMap="CreditEntityMap">
+    <select id="_findByCreditCard" resultMap="_CreditEntityMap">
         SELECT
         register.credit_card_number,
         user_id,
@@ -46,34 +46,25 @@
         ORDER BY credit_card_number ASC
     </select>
 
-    <select id="findAll" resultMap="CreditEntityMap">
-        SELECT
-          credit_card_number,
-          user_id,
-          valid_credit_card_status
-        FROM credit_register_event
-        ORDER BY credit_card_number ASC
-    </select>
 
-
-    <resultMap id="CreditEntityMap" type="jp.co.biglobe.isp.domain.credit_card.ValidCreditEntity">
+    <resultMap id="_CreditEntityMap" type="jp.co.biglobe.isp.domain.credit_card.ValidCreditEntity">
         <constructor>
-            <arg javaType="jp.co.biglobe.isp.domain.credit_card.CreditCardNumber" resultMap="CreditCardNumberMap"/>
-            <arg javaType="jp.co.biglobe.isp.domain.member.UserId" resultMap="UserIdMap"/>
+            <arg javaType="jp.co.biglobe.isp.domain.credit_card.CreditCardNumber" resultMap="_CreditCardNumberMap"/>
+            <arg javaType="jp.co.biglobe.isp.domain.member.UserId" resultMap="_UserIdMap"/>
             <arg javaType="jp.co.biglobe.isp.domain.credit_card.ValidCreditCardStatus"
                  column="valid_credit_card_status"
                  typeHandler="org.apache.ibatis.type.EnumTypeHandler"/>
         </constructor>
     </resultMap>
 
-    <resultMap id="CreditCardNumberMap" type="jp.co.biglobe.isp.domain.credit_card.CreditCardNumber">
+    <resultMap id="_CreditCardNumberMap" type="jp.co.biglobe.isp.domain.credit_card.CreditCardNumber">
         <constructor>
             <arg column="credit_card_number" javaType="String" jdbcType="VARCHAR"/>
         </constructor>
     </resultMap>
 
 
-    <resultMap id="UserIdMap" type="jp.co.biglobe.isp.domain.member.UserId">
+    <resultMap id="_UserIdMap" type="jp.co.biglobe.isp.domain.member.UserId">
         <constructor>
             <arg column="user_id" javaType="String" jdbcType="VARCHAR"/>
         </constructor>

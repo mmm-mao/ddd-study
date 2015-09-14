@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface MemberQueryMapper {
 
-    public void signUp(
+    public void _signUp(
             @Param("memberEntity") MemberEntity memberEntity
     );
 }

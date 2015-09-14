@@ -19,12 +19,12 @@ public class BIGLOBEIDとBIGLOBEパスワードを発番するサービスTest {
     @Test
     public void testBIGLOBEID発番() throws Exception {
         String actual = sut.BIGLOBEID発番();
-        assertThat(actual, is("BIGLOBE0000000001"));
+        assertThat(actual, is("abc12345"));
     }
 
     @Test
     public void testBIGLOBEパスワード発番() throws Exception {
         String actual = sut.BIGLOBEパスワード発番();
-        assertThat(actual, is("!\"#$%&'()0=~|"));
+        assertThat(actual, is("password"));
     }
 }

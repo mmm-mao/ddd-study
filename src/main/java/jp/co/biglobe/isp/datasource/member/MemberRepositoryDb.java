@@ -24,7 +24,7 @@ public class MemberRepositoryDb implements MemberRepository {
 
     @Override
     public void 入会する(MemberEntity memberEntity){
-        memberQueryMapper.signUp(memberEntity);
+        memberQueryMapper._signUp(memberEntity);
     }
 
     public void 退会する(MemberEntity memberEntity){}

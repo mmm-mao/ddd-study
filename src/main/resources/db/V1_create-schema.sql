@@ -23,6 +23,8 @@ CREATE TABLE IF NOT EXISTS member_profile_register_event (
   birthday DATE NOT NULL,
   zip_code VARCHAR2(8)  NOT NULL,
   address VARCHAR2(128)  NOT NULL,
+  contract_phone_number VARCHAR2(15)  NOT NULL,
+  daytime_phone_number VARCHAR2(15)  NOT NULL,
   system_receipt_date_time TIMESTAMP NOT NULL,
   CONSTRAINT pk_member_profile_register_event PRIMARY KEY(profile_register_event_id)
 );
