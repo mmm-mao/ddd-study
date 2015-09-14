@@ -29,7 +29,7 @@ import static org.junit.Assert.assertThat;
 @ContextConfiguration(locations = {"classpath:context.xml"})
 @Sql(scripts = {
         "/sql/drop-tables.sql",
-        "/db/V1__create-schema.sql",
+        "/db/V1_create-schema.sql",
 }, config = @SqlConfig(encoding = "UTF-8"))
 public class CreditCardRepositoryDbTest {
 
@@ -39,14 +39,6 @@ public class CreditCardRepositoryDbTest {
     @Autowired
     private CreditCardRepository creditCardRepository;
 
-    @Before
-    public void setup() throws IOException, DatabaseUnitException, SQLException {
-        // 処理前にテーブルをクリアする
-        //tester.executeAllClearTableAndSeq();
-
-        // 「現在時刻」を固定化する
-        //CurrentLocalDateTimeCreator.setTestClock(TestClock.DEFAULT);
-    }
 
     @Test
     public void 登録する() throws Exception {

@@ -18,7 +18,13 @@ public class CreditCardRepositoryDb implements CreditCardRepository {
 
     @Override
     public CreditEntity クレジットカード番号で検索する(CreditCardNumber creditCardNumber) {
-        return creditCardQueryMapper.findByCreditCard(creditCardNumber);
+        ValidCreditEntity validCreditEntity = creditCardQueryMapper.findByCreditCard(creditCardNumber);
+
+        if(validCreditEntity == null){
+            return new NotExistCreditEntity();
+        }
+
+        return validCreditEntity;
     }
 
     @Override
@@ -41,7 +47,7 @@ public class CreditCardRepositoryDb implements CreditCardRepository {
 
         boolean result = creditCardDomain.check(
                 creditCard.getCreditCardNumber().getValue(),
-                creditCard.getEffectiveMonth().getValue(),
+                creditCard.getEffectiveMonth().get有効かチェックする値(),
                 creditCard.getSecurityNumber().getValue().toString()
         );
 

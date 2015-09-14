@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class Address {
 
+    private final ZipCode zipCode;
     private final AddressText addressText;
 
-    private final ZipCode zipCode;
 }

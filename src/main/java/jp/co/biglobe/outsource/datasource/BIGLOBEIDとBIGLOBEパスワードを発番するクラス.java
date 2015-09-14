@@ -8,7 +8,7 @@ public class BIGLOBEIDとBIGLOBEパスワードを発番するクラス implemen
 
     @Override
     public String BIGLOBEIDを発番するメソッド() {
-        return "BIGLOBE0000000001";
+        return "abc12345";
     }
 
     @Override
