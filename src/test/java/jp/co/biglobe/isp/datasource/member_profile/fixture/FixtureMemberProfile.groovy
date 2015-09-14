@@ -46,7 +46,7 @@ class FixtureMemberProfile {
         public static final String MAIL_ADDRESS = "mail_address"
 
         private final static Map defaultValue = [
-                (REGISTER_EVENT_ID) : 1,
+                (MAIL_ADDRESS_REGISTER_EVENT_ID) : 1,
                 (USER_ID): "abc12345",
                 (MAIL_ADDRESS): "test-mail@test.co.jp",
                 (SYSTEM_RECEIPT_DATE_TIME)  : "2014-01-01 00:00:00",

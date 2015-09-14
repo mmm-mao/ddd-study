@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="jp.co.biglobe.isp.datasource.member_profile.MemberProfileQueryMapper">
+
+    <insert id="profileRegister">
+        INSERT INTO member_profile_register_event
+        (
+        user_id,
+        name,
+        name_kana,
+        gender,
+        birthday,
+        zip_code,
+        address,
+        contract_phone_number,
+        daytime_phone_number,
+        system_receipt_date_time
+        )
+        VALUES
+        (
+        #{memberProfileEntity.userId.value},
+        #{memberProfileEntity.profile.name.value},
+        #{memberProfileEntity.profile.nameKana.value},
+        #{memberProfileEntity.profile.gender},
+        #{memberProfileEntity.profile.birthday.value},
+        #{memberProfileEntity.profile.address.zipCode.value},
+        #{memberProfileEntity.profile.address.addressText.value},
+        #{memberProfileEntity.profile.phoneNumber.contractPhoneNumber.value},
+        #{memberProfileEntity.profile.phoneNumber.daytimePhoneNumber.value},
+        sysdate
+        )
+    </insert>
+
+    <insert id="mailAddressRegister">
+        INSERT INTO member_mail_address_register_event
+        (
+        user_id,
+        mail_address,
+        system_receipt_date_time
+        )
+        VALUES
+        (
+        #{memberProfileEntity.userId.value},
+        #{memberProfileEntity.mailAddress.value},
+        sysdate
+        )
+    </insert>
+
+
+</mapper>

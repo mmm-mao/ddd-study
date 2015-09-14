@@ -22,6 +22,7 @@ public class MemberProfileAssert {
 
     public void assertTableWithAllColumns(Map expectedData) throws Exception {
         assertProfileRegister(expectedData);
+        assertMailAddressRegister(expectedData);
     }
 
     private void assertProfileRegister(Map expectedData) throws Exception {
