@@ -1,6 +1,8 @@
 package jp.co.biglobe.isp.service.member;
 
 
+import jp.co.biglobe.isp.datasource.auth.assertion.AuthAssert;
+import jp.co.biglobe.isp.datasource.auth.fixture.FixtureAuth;
 import jp.co.biglobe.isp.datasource.course.assertion.CourseAssert;
 import jp.co.biglobe.isp.datasource.course.fixture.FixtureCourse;
 import jp.co.biglobe.isp.datasource.credit_card.assertion.CreditAssert;
@@ -92,6 +94,9 @@ public class SignUpServiceTest {
 
         CourseAssert courseAssert = new CourseAssert(tester);
         courseAssert.assertTableWithAllColumns(FixtureCourse.One.受付済み());
+
+        AuthAssert authAssert = new AuthAssert(tester);
+        authAssert.assertTableWithAllColumns(FixtureAuth.One.登録済み());
     }
 
 

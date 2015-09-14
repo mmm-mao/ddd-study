@@ -2,7 +2,7 @@ package jp.co.biglobe.isp.service.member;
 
 import jp.co.biglobe.isp.domain.auth.ValidAuth;
 import jp.co.biglobe.isp.domain.auth.AuthRepository;
-import jp.co.biglobe.isp.domain.auth.BiglobePassword;
+import jp.co.biglobe.isp.domain.auth.UserPassword;
 import jp.co.biglobe.isp.domain.course.Course;
 import jp.co.biglobe.isp.domain.course.CourseRepository;
 import jp.co.biglobe.isp.domain.credit_card.CreditCardRepository;
@@ -76,8 +76,8 @@ public class SignUpService {
     }
 
     private ValidAuth 認証を登録する(UserId userId){
-        BiglobePassword biglobePassword = authRepository.パスワードを作成する();
-        ValidAuth validAuth = new ValidAuth(userId, biglobePassword);
+        UserPassword userPassword = authRepository.パスワードを作成する();
+        ValidAuth validAuth = new ValidAuth(userId, userPassword);
         authRepository.登録する(validAuth);
         return validAuth;
     }

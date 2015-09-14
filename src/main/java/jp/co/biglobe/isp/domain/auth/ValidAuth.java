@@ -11,7 +11,7 @@ public class ValidAuth implements Auth{
     @Getter
     private final UserId userId;
 
-    private final BiglobePassword biglobePassword;
+    private final UserPassword userPassword;
 
 
     @Override
