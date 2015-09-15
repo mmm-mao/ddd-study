@@ -71,6 +71,16 @@ class FixtureMember {
                     Fixture.changeValueListForString([(WITHDRAW_TABLE_NAME): [(rowCount): WithdrawInitialData.defaultValue]], map)
         }
 
+        public static Map 退会済み(int rowCount, String userId){
+
+            Map<FixtureChangeTarget, String> map = new HashMap<FixtureChangeTarget, String>()
+            map.put(new FixtureChangeTarget(WITHDRAW_TABLE_NAME, rowCount, USER_ID), userId)
+            map.put(new FixtureChangeTarget(WITHDRAW_TABLE_NAME, rowCount, WithdrawInitialData.WITHDRAWAL_DATE), YearMonth.now().minusMonths(1).atEndOfMonth().format(DateTimeFormatter.ofPattern("uuuu-MM-dd")),)
+
+            return 入会済み(rowCount, userId) +
+                    Fixture.changeValueListForString([(WITHDRAW_TABLE_NAME): [(rowCount): WithdrawInitialData.defaultValue]], map)
+        }
+
 
 
     }
@@ -84,6 +94,11 @@ class FixtureMember {
 
         public static Map 入会済み() {
             return Default.入会済み(oneRowCount, userId,)
+        }
+
+
+        public static Map 退会済み() {
+            return Default.退会済み(oneRowCount, userId,)
         }
 
 

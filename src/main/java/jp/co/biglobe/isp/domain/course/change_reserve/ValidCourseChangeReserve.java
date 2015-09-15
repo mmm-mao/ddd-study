@@ -1,5 +1,6 @@
 package jp.co.biglobe.isp.domain.course.change_reserve;
 
+import jp.co.biglobe.isp.domain.course.CurrentCourse;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
@@ -21,5 +22,9 @@ public class ValidCourseChangeReserve implements CourseChangeReserve{
         }
 
         return true;
+    }
+
+    public CurrentCourse toCurrentCourse(){
+        return changeReserveCourse.toCurrentCourse();
     }
 }

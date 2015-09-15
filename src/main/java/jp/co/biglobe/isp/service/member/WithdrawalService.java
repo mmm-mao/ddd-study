@@ -34,7 +34,7 @@ public class WithdrawalService {
 
         MemberEntity memberEntity = memberRepository.BiglobeIdで検索する(validAuth.getUserId());
 
-        Course course = courseRepository.BiglobeIdで検索する(validAuth.getUserId());
+        Course course = courseRepository.BiglobeIdで検索する_存在しなかったらエラー(validAuth.getUserId());
 
         return new WithdrawalConfirmContainer(memberEntity, course);
     }

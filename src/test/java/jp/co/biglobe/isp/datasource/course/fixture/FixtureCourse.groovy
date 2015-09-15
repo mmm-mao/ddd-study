@@ -38,9 +38,18 @@ class FixtureCourse {
 
     public static class Default {
 
-        public static Map 受付済み(int rowCount, String eventId) {
+        public static Map 受付済み(int rowCount, int eventId) {
             Map<FixtureChangeTarget, String> map = new HashMap<FixtureChangeTarget, String>()
             map.put(new FixtureChangeTarget(RECEIPT_TABLE_NAME, rowCount, EVENT_ID), eventId)
+
+            return Fixture.changeValueListForString([(RECEIPT_TABLE_NAME): [(rowCount): ReceiptInitialData.defaultValue]], map)
+
+        }
+
+        public static Map コース変更予約中(int rowCount, int eventId) {
+            Map<FixtureChangeTarget, String> map = new HashMap<FixtureChangeTarget, String>()
+            map.put(new FixtureChangeTarget(RECEIPT_TABLE_NAME, rowCount, EVENT_ID), eventId)
+            map.put(new FixtureChangeTarget(RECEIPT_TABLE_NAME, rowCount, ReceiptInitialData.SWITCHING_DATE), LocalDate.now().plusMonths(1).format(DateTimeFormatter.ofPattern("uuuu-MM-dd")),)
 
             return Fixture.changeValueListForString([(RECEIPT_TABLE_NAME): [(rowCount): ReceiptInitialData.defaultValue]], map)
 
@@ -52,14 +61,27 @@ class FixtureCourse {
     public static class One {
 
         private static int oneRowCount = 1;
-        private static String eventId = "1"
+        private static int eventId = 1
 
 
         public static Map 受付済み() {
             return Default.受付済み(oneRowCount, eventId)
         }
 
+    }
 
+    public static class Two {
+
+        private static int oneRowCount = 1;
+        private static int oneEventId = 1
+
+        private static int twoRowCount = 2;
+        private static int twoEventId = 2
+
+
+        public static Map コース変更予約中() {
+            return Fixture.joinTable(Default.受付済み(oneRowCount, oneEventId), Default.コース変更予約中(twoRowCount, twoEventId));
+        }
 
     }
 

@@ -40,4 +40,22 @@ class Fixture {
         return tempMap;
     }
 
+    public static Map joinTable(final Map fixture1, final Map fixture2) {
+
+        Cloner cloner = new Cloner();
+        Map tempMap = cloner.deepClone(fixture1)
+        Map tempMap2 = cloner.deepClone(fixture2)
+
+
+        for (Map.Entry<String, Map> e : tempMap2.entrySet()) {
+            for (Map.Entry<Integer, Map> f : e.getValue().entrySet()) {
+
+                tempMap.get(e.key).put(f.key, f.value)
+            }
+        }
+
+
+        return tempMap;
+    }
+
 }

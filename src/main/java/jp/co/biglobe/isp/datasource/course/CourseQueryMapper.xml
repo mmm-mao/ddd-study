@@ -21,4 +21,37 @@
     </insert>
 
 
+    <select id="findByUserId" resultMap="CourseMap">
+        SELECT
+        course,
+        switching_date
+        FROM course_receipt_event
+        where user_id = #{userId.value}
+        ORDER BY switching_date DESC
+    </select>
+
+
+    <resultMap id="CourseMap" type="jp.co.biglobe.isp.domain.course.change_reserve.ValidCourseChangeReserve">
+        <constructor>
+            <arg javaType="jp.co.biglobe.isp.domain.course.change_reserve.ChangeReserveCourse" resultMap="ChangeReserveCourseMap"/>
+            <arg javaType="jp.co.biglobe.isp.domain.course.change_reserve.CourseSwitchingDate" resultMap="CourseSwitchingDateMap"/>
+        </constructor>
+    </resultMap>
+
+    <resultMap id="ChangeReserveCourseMap" type="jp.co.biglobe.isp.domain.course.change_reserve.ChangeReserveCourse">
+        <constructor>
+            <arg javaType="jp.co.biglobe.isp.domain.course.CourseName"
+                 column="course"
+                 typeHandler="org.apache.ibatis.type.EnumTypeHandler"/>
+        </constructor>
+    </resultMap>
+
+
+    <resultMap id="CourseSwitchingDateMap" type="jp.co.biglobe.isp.domain.course.change_reserve.CourseSwitchingDate">
+        <constructor>
+            <arg column="switching_date" javaType="java.time.LocalDate" jdbcType="TIMESTAMP"/>
+        </constructor>
+    </resultMap>
+
+
 </mapper>

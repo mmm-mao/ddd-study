@@ -9,7 +9,7 @@ public class CurrentCourse {
     private final CourseName courseName;
 
     public boolean 変更を申し込むコースが適用中のコースと同じか(ChangeReserveCourse changeReserveCourse){
-        return false;
+        return courseName.equals(changeReserveCourse.getCourseName());
     }
 
     public boolean ニコニココースか(){

@@ -15,6 +15,9 @@ import org.springframework.stereotype.Service;
 public class CourseChangeReserveService {
 
     @Autowired
+    private CourseChangeReserveCheckService courseChangeReserveCheckService;
+
+    @Autowired
     private MemberRepository memberRepository;
 
     @Autowired
@@ -25,35 +28,15 @@ public class CourseChangeReserveService {
 
     public void 受け付ける(ValidAuth validAuth, ChangeReserveCourse changeReserveCourse){
 
-
-        検証する(validAuth, changeReserveCourse);
+        courseChangeReserveCheckService.検証する(validAuth, changeReserveCourse);
 
         コース変更予約する(validAuth.getUserId(), changeReserveCourse);
 
-
     }
-
-    private void 検証する(ValidAuth validAuth, ChangeReserveCourse changeReserveCourse){
-
-        biglobeAuthService.サービス利用不可をNGとして認証する(validAuth);
-
-        MemberEntity memberEntity = memberRepository.BiglobeIdで検索する(validAuth.getUserId());
-
-        Course course = courseRepository.BiglobeIdで検索する(validAuth.getUserId());
-
-        if(course.コース変更予約できるか(memberEntity, changeReserveCourse)){
-            return;
-        }
-
-        throw new RuntimeException("コース変更できない");
-
-
-    }
-
 
     private void コース変更予約する(UserId userId, ChangeReserveCourse changeReserveCourse){
 
-        Course course = courseRepository.BiglobeIdで検索する(userId);
+        Course course = courseRepository.BiglobeIdで検索する_存在しなかったらエラー(userId);
         courseRepository.変更予約する(course.コース変更予約する(changeReserveCourse));
     }
 

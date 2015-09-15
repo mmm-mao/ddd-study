@@ -9,6 +9,6 @@ public interface CourseRepository {
 
     public void 変更予約する(Course course);
 
-    public Course BiglobeIdで検索する(UserId userId);
+    public Course BiglobeIdで検索する_存在しなかったらエラー(UserId userId);
 
 }

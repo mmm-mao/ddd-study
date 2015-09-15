@@ -7,6 +7,6 @@ public class NotExistWithdrawal implements Withdrawal{
 
     @Override
     public boolean 申込済みか(){
-        return true;
+        return false;
     }
 }
