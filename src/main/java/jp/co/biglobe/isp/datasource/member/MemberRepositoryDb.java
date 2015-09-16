@@ -30,8 +30,13 @@ public class MemberRepositoryDb implements MemberRepository {
     public void 退会する(MemberEntity memberEntity){}
 
     @Override
-    public MemberEntity BiglobeIdで検索する(UserId userId){
-        return MemberEntity.入会する(userId);
+    public MemberEntity BiglobeIdで検索する_存在しなかったらエラー(UserId userId){
+        MemberEntity memberEntity = memberQueryMapper.findByUserId(userId);
+        if(memberEntity == null){
+            throw new UnsupportedOperationException("指定された会員が存在しない");
+        }
+
+        return memberEntity;
     }
 
 

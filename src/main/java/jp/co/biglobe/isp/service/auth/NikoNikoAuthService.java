@@ -33,7 +33,7 @@ public class NikoNikoAuthService {
 
         biglobeAuthService.サービス利用不可をNGとして認証する(validAuth);
 
-        MemberEntity memberEntity = memberRepository.BiglobeIdで検索する(validAuth.getUserId());
+        MemberEntity memberEntity = memberRepository.BiglobeIdで検索する_存在しなかったらエラー(validAuth.getUserId());
 
         Course course = courseRepository.BiglobeIdで検索する_存在しなかったらエラー(validAuth.getUserId());
 

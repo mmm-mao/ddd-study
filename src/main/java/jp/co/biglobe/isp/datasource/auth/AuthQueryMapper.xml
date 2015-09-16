@@ -18,5 +18,33 @@
         )
     </insert>
 
+    <select id="findByUserIdAndPassword" resultMap="ValidAuthMap">
+        SELECT
+        user_id,
+        user_password
+        FROM auth_event
+        where user_id = #{validAuth.userId.value}
+        AND user_password = #{validAuth.userPassword.value}
+    </select>
+
+    <resultMap id="ValidAuthMap" type="jp.co.biglobe.isp.domain.auth.ValidAuth">
+        <constructor>
+            <arg javaType="jp.co.biglobe.isp.domain.member.UserId" resultMap="UserIdMap"/>
+            <arg javaType="jp.co.biglobe.isp.domain.auth.UserPassword" resultMap="UserPasswordMap"/>
+        </constructor>
+    </resultMap>
+
+
+    <resultMap id="UserIdMap" type="jp.co.biglobe.isp.domain.member.UserId">
+        <constructor>
+            <arg column="user_id" javaType="String" jdbcType="VARCHAR"/>
+        </constructor>
+    </resultMap>
+
+    <resultMap id="UserPasswordMap" type="jp.co.biglobe.isp.domain.auth.UserPassword">
+        <constructor>
+            <arg column="user_password" javaType="String" jdbcType="VARCHAR"/>
+        </constructor>
+    </resultMap>
 
 </mapper>

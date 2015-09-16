@@ -6,7 +6,6 @@ import jp.co.biglobe.isp.domain.course.CourseRepository;
 import jp.co.biglobe.isp.domain.course.change_reserve.ChangeReserveCourse;
 import jp.co.biglobe.isp.domain.member.MemberEntity;
 import jp.co.biglobe.isp.domain.member.MemberRepository;
-import jp.co.biglobe.isp.domain.member.UserId;
 import jp.co.biglobe.isp.service.auth.BiglobeAuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,7 +27,7 @@ public class CourseChangeReserveCheckService {
 
         biglobeAuthService.サービス利用不可をNGとして認証する(validAuth);
 
-        MemberEntity memberEntity = memberRepository.BiglobeIdで検索する(validAuth.getUserId());
+        MemberEntity memberEntity = memberRepository.BiglobeIdで検索する_存在しなかったらエラー(validAuth.getUserId());
 
         Course course = courseRepository.BiglobeIdで検索する_存在しなかったらエラー(validAuth.getUserId());
 

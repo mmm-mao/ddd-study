@@ -32,7 +32,7 @@ public class WithdrawalService {
 
         biglobeAuthService.サービス利用不可をOKとして認証する(validAuth);
 
-        MemberEntity memberEntity = memberRepository.BiglobeIdで検索する(validAuth.getUserId());
+        MemberEntity memberEntity = memberRepository.BiglobeIdで検索する_存在しなかったらエラー(validAuth.getUserId());
 
         Course course = courseRepository.BiglobeIdで検索する_存在しなかったらエラー(validAuth.getUserId());
 
@@ -58,7 +58,7 @@ public class WithdrawalService {
 
         biglobeAuthService.サービス利用不可をOKとして認証する(validAuth);
 
-        MemberEntity memberEntity = memberRepository.BiglobeIdで検索する(validAuth.getUserId());
+        MemberEntity memberEntity = memberRepository.BiglobeIdで検索する_存在しなかったらエラー(validAuth.getUserId());
 
         if(!memberEntity.退会できるか()){
             throw new RuntimeException("既に退会申し込み済みです");
@@ -66,7 +66,7 @@ public class WithdrawalService {
     }
 
     private void 退会する(UserId userId){
-        MemberEntity memberEntity = memberRepository.BiglobeIdで検索する(userId);
+        MemberEntity memberEntity = memberRepository.BiglobeIdで検索する_存在しなかったらエラー(userId);
         memberRepository.退会する(memberEntity.退会する());
     }
 

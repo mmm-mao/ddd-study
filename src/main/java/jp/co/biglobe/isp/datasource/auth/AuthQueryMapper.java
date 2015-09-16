@@ -12,5 +12,8 @@ public interface AuthQueryMapper {
             @Param("validAuth") ValidAuth validAuth
     );
 
+    public ValidAuth findByUserIdAndPassword(
+            @Param("validAuth") ValidAuth validAuth
+    );
 
 }

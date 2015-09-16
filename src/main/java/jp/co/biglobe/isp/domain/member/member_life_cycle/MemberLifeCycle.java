@@ -17,6 +17,11 @@ public class MemberLifeCycle {
 
     private final Withdrawal withdrawal;
 
+    public MemberLifeCycle(SignUp signUp, ValidWithdrawal validWithdrawal){
+        this.signUp = signUp;
+        this.withdrawal = validWithdrawal == null ? new NotExistWithdrawal() : validWithdrawal;
+    }
+
     private MemberStatus 契約状態を判定する(){
 
         if(withdrawal.申込済みか()){

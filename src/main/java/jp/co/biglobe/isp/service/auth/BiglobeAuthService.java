@@ -30,9 +30,9 @@ public class BiglobeAuthService {
 
     public void サービス利用不可をOKとして認証する(ValidAuth validAuth){
 
-        Auth auth = authRepository._Idとパスワードで検索する(validAuth);
+        Auth auth = authRepository._Idとパスワードで検索する_存在しなかったらエラー(validAuth);
 
-        MemberEntity memberEntity = memberRepository.BiglobeIdで検索する(validAuth.getUserId());
+        MemberEntity memberEntity = memberRepository.BiglobeIdで検索する_存在しなかったらエラー(validAuth.getUserId());
 
         if(auth.認証OKか(memberEntity)){
             return;

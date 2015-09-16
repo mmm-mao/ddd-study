@@ -19,11 +19,6 @@ public class ValidAuth implements Auth{
 
 
     @Override
-    public boolean 存在するか(){
-        return true;
-    }
-
-    @Override
     public boolean 認証OKか(MemberEntity memberEntity){
         return memberEntity.入会中か();
     }

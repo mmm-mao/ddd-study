@@ -7,5 +7,5 @@ public interface AuthRepository {
 
     public void 登録する(ValidAuth validAuth);
 
-    public Auth _Idとパスワードで検索する(ValidAuth validAuth);
+    public Auth _Idとパスワードで検索する_存在しなかったらエラー(ValidAuth validAuth);
 }

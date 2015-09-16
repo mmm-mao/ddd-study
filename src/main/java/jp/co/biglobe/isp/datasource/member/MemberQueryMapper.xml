@@ -18,5 +18,60 @@
         )
     </insert>
 
+    <select id="findByUserId" resultMap="MemberEntityMap">
+        SELECT
+        sign_up.user_id,
+        sign_up_date,
+        withdrawal_date
+        FROM member_sign_up_event sign_up
+        LEFT JOIN member_withdraw_event withdraw ON sign_up.user_id = withdraw.user_id
+        where sign_up.user_id = #{userId.value}
+    </select>
+
+
+    <resultMap id="MemberEntityMap" type="jp.co.biglobe.isp.domain.member.MemberEntity">
+        <constructor>
+            <arg javaType="jp.co.biglobe.isp.domain.member.UserId" resultMap="UserIdMap"/>
+            <arg javaType="jp.co.biglobe.isp.domain.member.member_life_cycle.MemberLifeCycle" resultMap="MemberLifeCycleMap"/>
+        </constructor>
+    </resultMap>
+
+    <resultMap id="UserIdMap" type="jp.co.biglobe.isp.domain.member.UserId">
+        <constructor>
+            <arg column="user_id" javaType="String" jdbcType="VARCHAR"/>
+        </constructor>
+    </resultMap>
+
+    <resultMap id="MemberLifeCycleMap" type="jp.co.biglobe.isp.domain.member.member_life_cycle.MemberLifeCycle">
+        <constructor>
+            <arg javaType="jp.co.biglobe.isp.domain.member.member_life_cycle.sign_up.SignUp" resultMap="SignUpMap"/>
+            <arg javaType="jp.co.biglobe.isp.domain.member.member_life_cycle.withdrawal.ValidWithdrawal" resultMap="ValidWithdrawalMap"/>
+        </constructor>
+    </resultMap>
+
+    <resultMap id="SignUpMap" type="jp.co.biglobe.isp.domain.member.member_life_cycle.sign_up.SignUp">
+        <constructor>
+            <arg javaType="jp.co.biglobe.isp.domain.member.member_life_cycle.sign_up.SignUpDate" resultMap="SignUpDateMap"/>
+        </constructor>
+    </resultMap>
+    <resultMap id="SignUpDateMap" type="jp.co.biglobe.isp.domain.member.member_life_cycle.sign_up.SignUpDate">
+        <constructor>
+            <arg column="sign_up_date" javaType="java.time.LocalDate" jdbcType="TIMESTAMP"/>
+        </constructor>
+    </resultMap>
+
+    <resultMap id="ValidWithdrawalMap" type="jp.co.biglobe.isp.domain.member.member_life_cycle.withdrawal.ValidWithdrawal">
+        <constructor>
+            <arg javaType="jp.co.biglobe.isp.domain.member.member_life_cycle.withdrawal.WithdrawalDate" resultMap="WithdrawalDateMap"/>
+        </constructor>
+    </resultMap>
+    <resultMap id="WithdrawalDateMap" type="jp.co.biglobe.isp.domain.member.member_life_cycle.withdrawal.WithdrawalDate">
+        <constructor>
+            <arg column="withdrawal_date" javaType="java.time.LocalDate" jdbcType="TIMESTAMP"/>
+        </constructor>
+    </resultMap>
+
+
+
 
 </mapper>

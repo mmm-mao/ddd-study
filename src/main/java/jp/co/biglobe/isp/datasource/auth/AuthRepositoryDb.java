@@ -29,8 +29,14 @@ public class AuthRepositoryDb implements AuthRepository {
     }
 
     @Override
-    public ValidAuth _Idとパスワードで検索する(ValidAuth validAuth){
-        return new ValidAuth(new UserId("abc12345"), new UserPassword("adfefwrfew"));
+    public ValidAuth _Idとパスワードで検索する_存在しなかったらエラー(ValidAuth validAuth){
+        ValidAuth resultValidAuth =  authQueryMapper.findByUserIdAndPassword(validAuth);
+
+        if(resultValidAuth == null){
+            throw new UnsupportedOperationException("IDとパスワードの組み合わせが不一致");
+        }
+
+        return resultValidAuth;
     }
 
 }

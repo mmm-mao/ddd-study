@@ -9,5 +9,5 @@ public interface MemberRepository {
 
     public void 退会する(MemberEntity memberEntity);
 
-    public MemberEntity BiglobeIdで検索する(UserId userId);
+    public MemberEntity BiglobeIdで検索する_存在しなかったらエラー(UserId userId);
 }
