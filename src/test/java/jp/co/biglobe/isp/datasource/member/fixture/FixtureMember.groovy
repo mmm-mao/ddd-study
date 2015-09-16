@@ -96,6 +96,9 @@ class FixtureMember {
             return Default.入会済み(oneRowCount, userId,)
         }
 
+        public static Map 退会予約中() {
+            return Default.退会予約中(oneRowCount, userId,)
+        }
 
         public static Map 退会済み() {
             return Default.退会済み(oneRowCount, userId,)

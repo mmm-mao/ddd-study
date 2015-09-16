@@ -24,10 +24,12 @@ public class MemberRepositoryDb implements MemberRepository {
 
     @Override
     public void 入会する(MemberEntity memberEntity){
-        memberQueryMapper._signUp(memberEntity);
+        memberQueryMapper.signUp(memberEntity);
     }
 
-    public void 退会する(MemberEntity memberEntity){}
+    public void 退会する(MemberEntity memberEntity){
+        memberQueryMapper.withdrawal(memberEntity);
+    }
 
     @Override
     public MemberEntity biglobeIdで検索する_存在しなかったらエラー(BiglobeId biglobeId){

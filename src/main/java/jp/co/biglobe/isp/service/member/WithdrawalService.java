@@ -61,7 +61,7 @@ public class WithdrawalService {
         MemberEntity memberEntity = memberRepository.biglobeIdで検索する_存在しなかったらエラー(validAuth.getBiglobeId());
 
         if(!memberEntity.退会できるか()){
-            throw new RuntimeException("既に退会申し込み済みです");
+            throw new UnsupportedOperationException("既に退会申し込み済みです");
         }
     }
 

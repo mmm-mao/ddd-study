@@ -46,6 +46,15 @@ class FixtureCourse {
 
         }
 
+        public static Map ニコニココースで受付済み(int rowCount, int eventId) {
+            Map<FixtureChangeTarget, String> map = new HashMap<FixtureChangeTarget, String>()
+            map.put(new FixtureChangeTarget(RECEIPT_TABLE_NAME, rowCount, EVENT_ID), eventId)
+            map.put(new FixtureChangeTarget(RECEIPT_TABLE_NAME, rowCount, ReceiptInitialData.COURSE), "ニコニコ")
+
+            return Fixture.changeValueListForString([(RECEIPT_TABLE_NAME): [(rowCount): ReceiptInitialData.defaultValue]], map)
+
+        }
+
         public static Map コース変更予約中(int rowCount, int eventId) {
             Map<FixtureChangeTarget, String> map = new HashMap<FixtureChangeTarget, String>()
             map.put(new FixtureChangeTarget(RECEIPT_TABLE_NAME, rowCount, EVENT_ID), eventId)
@@ -66,6 +75,11 @@ class FixtureCourse {
 
         public static Map 受付済み() {
             return Default.受付済み(oneRowCount, eventId)
+        }
+
+
+        public static Map ニコニココースで受付済み() {
+            return Default.ニコニココースで受付済み(oneRowCount, eventId)
         }
 
     }

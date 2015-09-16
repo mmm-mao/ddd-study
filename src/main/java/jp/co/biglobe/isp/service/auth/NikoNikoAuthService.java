@@ -20,13 +20,8 @@ public class NikoNikoAuthService {
     private MemberRepository memberRepository;
 
     @Autowired
-    private CreditCardRepository creditCardRepository;
-
-    @Autowired
     private CourseRepository courseRepository;
 
-    @Autowired
-    private AuthRepository authRepository;
 
     public void 受け付ける(ValidAuth validAuth){
 
@@ -42,7 +37,7 @@ public class NikoNikoAuthService {
             return;
         }
 
-        throw new RuntimeException("ニコニコ動画認証できません");
+        throw new UnsupportedOperationException("ニコニコ動画認証できません");
 
 
 

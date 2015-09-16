@@ -6,7 +6,11 @@ import org.apache.ibatis.annotations.Param;
 
 public interface MemberQueryMapper {
 
-    public void _signUp(
+    public void signUp(
+            @Param("memberEntity") MemberEntity memberEntity
+    );
+
+    public void withdrawal(
             @Param("memberEntity") MemberEntity memberEntity
     );
 

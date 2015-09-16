@@ -3,7 +3,7 @@
 
 <mapper namespace="jp.co.biglobe.isp.datasource.member.MemberQueryMapper">
 
-    <insert id="_signUp">
+    <insert id="signUp">
         INSERT INTO member_sign_up_event
         (
         user_id,
@@ -14,6 +14,21 @@
         (
         #{memberEntity.biglobeId.value},
         #{memberEntity.lifeCycle.signUp.signUpDate.value},
+        sysdate
+        )
+    </insert>
+
+    <insert id="withdrawal">
+        INSERT INTO member_withdraw_event
+        (
+        user_id,
+        withdrawal_date,
+        system_receipt_date_time
+        )
+        VALUES
+        (
+        #{memberEntity.biglobeId.value},
+        #{memberEntity.lifeCycle.withdrawal.withdrawalDate.value},
         sysdate
         )
     </insert>
