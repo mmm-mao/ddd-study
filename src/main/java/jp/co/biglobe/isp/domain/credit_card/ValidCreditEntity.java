@@ -37,6 +37,20 @@ public class ValidCreditEntity implements CreditEntity {
         return CreditCardRegisterStatus.登録不可;
     }
 
+    @Override
+    public CreditCardRegisterStatus 無効から有効に戻せるか(ValidCreditCardStatus validCreditCardStatus, BiglobeId biglobeId){
+
+        if(!this.biglobeId.同一ユーザIDか(biglobeId)){
+            return CreditCardRegisterStatus.登録不可;
+        }
+
+        if(validCreditCardStatus.無効か()){
+            return CreditCardRegisterStatus.登録不可;
+        }
+
+        return this.validCreditCardStatus.無効から有効に戻せるか();
+    }
+
     public boolean 無効か(){
         return validCreditCardStatus.無効か();
     }

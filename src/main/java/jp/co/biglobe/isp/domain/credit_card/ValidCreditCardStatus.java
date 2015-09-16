@@ -21,4 +21,19 @@ public enum ValidCreditCardStatus {
     public boolean 無効か(){
         return this.equals(ValidCreditCardStatus.無効);
     }
+
+    public CreditCardRegisterStatus 無効から有効に戻せるか(){
+
+
+        if(今現在有効か()){
+            return CreditCardRegisterStatus.登録不可;
+        }
+
+        return CreditCardRegisterStatus.登録可能;
+
+    }
+
+    private boolean 今現在有効か(){
+        return this.equals(ValidCreditCardStatus.有効);
+    }
 }

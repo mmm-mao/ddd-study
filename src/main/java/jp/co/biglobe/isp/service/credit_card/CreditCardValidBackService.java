@@ -28,10 +28,10 @@ public class CreditCardValidBackService {
     private void 検証する(BiglobeId biglobeId, CreditCard creditCard){
 
 
-        CreditCardRegisterStatus creditCardRegisterStatus = creditCardCheckService.受け付ける(creditCard);
+        CreditCardRegisterStatus creditCardRegisterStatus = creditCardCheckService.無効から元に戻せるか確認する(creditCard, biglobeId);
         if(!creditCardRegisterStatus.登録できるか()){
             creditCardRepository.送付されてきたクレジットカード情報が無効だと通知する(biglobeId);
-            throw new RuntimeException("新しいクレジットカードが無効です");
+            throw new UnsupportedOperationException("新しいクレジットカードが無効です");
         }
 
     }

@@ -71,6 +71,52 @@ class FixtureCredit {
                     Fixture.changeValueListForString([(VALID_TABLE_NAME): [(rowCount): ValidInitialData.defaultValue]], map)
         }
 
+        public static Map 無効にする(int rowCount, String creditCardNumber, String validEventId){
+
+            Map<FixtureChangeTarget, String> map1 = new HashMap<FixtureChangeTarget, String>()
+            map1.put(new FixtureChangeTarget(VALID_TABLE_NAME, rowCount, CREDIT_CARD_NUMBER), creditCardNumber)
+            map1.put(new FixtureChangeTarget(VALID_TABLE_NAME, rowCount, ValidInitialData.CREDIT_VALID_EVENT_ID), validEventId)
+
+            Map<FixtureChangeTarget, String> map2 = new HashMap<FixtureChangeTarget, String>()
+            map2.put(new FixtureChangeTarget(VALID_TABLE_NAME, rowCount + 1, CREDIT_CARD_NUMBER), creditCardNumber)
+            map2.put(new FixtureChangeTarget(VALID_TABLE_NAME, rowCount + 1, ValidInitialData.CREDIT_VALID_EVENT_ID), Integer.parseInt(validEventId) + 1)
+            map2.put(new FixtureChangeTarget(VALID_TABLE_NAME, rowCount + 1, ValidInitialData.VALID_CREDIT_CARD_STATUS), "無効")
+
+            return 登録済み(rowCount, creditCardNumber) +
+                    Fixture.joinTable(
+                            Fixture.changeValueListForString([(VALID_TABLE_NAME): [(rowCount): ValidInitialData.defaultValue]], map1),
+                            Fixture.changeValueListForString([(VALID_TABLE_NAME): [(rowCount + 1): ValidInitialData.defaultValue]], map2)
+                    )
+        }
+
+        public static Map 有効に戻す(int rowCount, String creditCardNumber, String validEventId){
+
+            Map<FixtureChangeTarget, String> map1 = new HashMap<FixtureChangeTarget, String>()
+            map1.put(new FixtureChangeTarget(VALID_TABLE_NAME, rowCount, CREDIT_CARD_NUMBER), creditCardNumber)
+            map1.put(new FixtureChangeTarget(VALID_TABLE_NAME, rowCount, ValidInitialData.CREDIT_VALID_EVENT_ID), validEventId)
+
+            Map<FixtureChangeTarget, String> map2 = new HashMap<FixtureChangeTarget, String>()
+            map2.put(new FixtureChangeTarget(VALID_TABLE_NAME, rowCount + 1, CREDIT_CARD_NUMBER), creditCardNumber)
+            map2.put(new FixtureChangeTarget(VALID_TABLE_NAME, rowCount + 1, ValidInitialData.CREDIT_VALID_EVENT_ID), Integer.parseInt(validEventId) + 1)
+            map2.put(new FixtureChangeTarget(VALID_TABLE_NAME, rowCount + 1, ValidInitialData.VALID_CREDIT_CARD_STATUS), "無効")
+
+
+            Map<FixtureChangeTarget, String> map3 = new HashMap<FixtureChangeTarget, String>()
+            map3.put(new FixtureChangeTarget(VALID_TABLE_NAME, rowCount + 2, CREDIT_CARD_NUMBER), creditCardNumber)
+            map3.put(new FixtureChangeTarget(VALID_TABLE_NAME, rowCount + 2, ValidInitialData.CREDIT_VALID_EVENT_ID), Integer.parseInt(validEventId) + 2)
+
+            return 登録済み(rowCount, creditCardNumber) +
+                    Fixture.joinTable(
+                            Fixture.joinTable(
+                                    Fixture.changeValueListForString([(VALID_TABLE_NAME): [(rowCount): ValidInitialData.defaultValue]], map1),
+                                    Fixture.changeValueListForString([(VALID_TABLE_NAME): [(rowCount + 1): ValidInitialData.defaultValue]], map2)
+                            ),
+                            Fixture.changeValueListForString([(VALID_TABLE_NAME): [(rowCount + 2): ValidInitialData.defaultValue]], map3)
+
+                    )
+
+        }
+
 
     }
 
@@ -89,6 +135,16 @@ class FixtureCredit {
         public static Map 有効で変更済み() {
             return Default.有効で登録済み(oneRowCount, "111-111-1112", "2")
         }
+
+        public static Map 無効にする() {
+            return Default.無効にする(oneRowCount, creditCardNumber, creditValidEventId)
+        }
+
+        public static Map 有効に戻す() {
+            return Default.有効に戻す(oneRowCount, creditCardNumber, creditValidEventId)
+        }
+
+
 
 
 

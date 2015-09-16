@@ -69,10 +69,12 @@ public class CreditCardRepositoryDb implements CreditCardRepository {
 
     @Override
     public void 有効に戻す(ValidCreditEntity validCreditCardEntity) {
+        creditCardQueryMapper.validRegister(validCreditCardEntity);
     }
 
     @Override
     public void 無効にする(ValidCreditEntity validCreditCardEntity) {
+        creditCardQueryMapper.validRegister(validCreditCardEntity);
     }
 
     @Override
@@ -91,9 +93,11 @@ public class CreditCardRepositoryDb implements CreditCardRepository {
 
     @Override
     public void 送付されてきたクレジットカード情報が無効だと通知する(BiglobeId biglobeId) {
+        // 今回は通知手段は決めてないので、何もしない。
     }
 
     @Override
     public void 無効になったことを通知する(BiglobeId biglobeId) {
+        // 今回は通知手段は決めてないので、何もしない。
     }
 }
