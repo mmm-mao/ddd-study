@@ -14,6 +14,9 @@ public class MemberProfile {
 
     private final MailAddress mailAddress;
 
+    /**
+     * 以下、エンティティのcreateのメソッド群
+     */
     public static MemberProfile 登録する(BiglobeId biglobeId, SignUpRequest signUpRequest){
         return new MemberProfile(biglobeId, signUpRequest.getProfile(), signUpRequest.getHopeMailAddress().メールアドレスに変換する());
     }

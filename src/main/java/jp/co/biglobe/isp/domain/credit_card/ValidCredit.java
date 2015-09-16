@@ -19,6 +19,9 @@ public class ValidCredit implements Credit {
 
     private final ValidCreditCardStatus validCreditCardStatus;
 
+    /**
+     * 以下、エンティティのcreateのメソッド群
+     */
     public static ValidCredit 作成する(CreditCardNumber creditCardNumber, BiglobeId biglobeId){
         return new ValidCredit(creditCardNumber, biglobeId, ValidCreditCardStatus.有効);
     }
@@ -35,6 +38,9 @@ public class ValidCredit implements Credit {
         return new ValidCredit(creditCardNumber, biglobeId, ValidCreditCardStatus.有効);
     }
 
+    /**
+     * 以下、エンティティのcreate以外の業務ロジックのメソッド群
+     */
     @Override
     public boolean exist(){
         return true;
@@ -50,7 +56,7 @@ public class ValidCredit implements Credit {
     }
 
     @Override
-    public CreditCardRegisterStatus 無効から有効に戻せるか(ValidCreditCardStatus validCreditCardStatus, BiglobeId biglobeId){
+    public CreditCardRegisterStatus is無効から有効に戻せる(ValidCreditCardStatus validCreditCardStatus, BiglobeId biglobeId){
 
         if(!this.biglobeId.is同一ID(biglobeId)){
             return CreditCardRegisterStatus.登録不可;

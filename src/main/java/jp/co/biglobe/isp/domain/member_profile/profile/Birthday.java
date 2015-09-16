@@ -9,7 +9,7 @@ public class Birthday {
 
     private final LocalDate value;
 
-    public boolean _20歳未満か(){
+    public boolean is20歳未満(){
         if(年齢を計算する() < 20){
             return true;
         };

@@ -17,6 +17,9 @@ public class Course {
 
     private final CourseChangeReserve courseChangeReserve;
 
+    /**
+     * 以下、エンティティのcreateのメソッド群
+     */
     public static Course 作成する(BiglobeId biglobeId, CurrentCourse currentCourse){
         return new Course(biglobeId, currentCourse, new NotExistCourseChangeReserve());
     }
@@ -25,6 +28,10 @@ public class Course {
     public Course コース変更予約する(ChangeReserveCourse changeReserveCourse){
         return new Course(biglobeId, currentCourse, ValidCourseChangeReserve.作成する(changeReserveCourse));
     }
+
+    /**
+     * 以下、エンティティのcreate以外の業務ロジックのメソッド群
+     */
 
     public boolean isコース変更予約できる(Member member, ChangeReserveCourse changeReserveCourse) {
 

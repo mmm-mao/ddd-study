@@ -33,7 +33,7 @@ public class CreditCardChangeService {
         biglobeAuthService.サービス利用不可をNGとして認証する(validAuth);
 
         CreditCardRegisterStatus creditCardRegisterStatus = creditCardCheckService.受け付ける(creditCard);
-        if(!creditCardRegisterStatus.登録できるか()){
+        if(!creditCardRegisterStatus.is登録できる()){
             throw new UnsupportedOperationException("新しいクレジットカードが無効です");
         }
     }

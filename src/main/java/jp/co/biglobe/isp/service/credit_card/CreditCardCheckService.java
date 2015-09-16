@@ -30,7 +30,7 @@ public class CreditCardCheckService {
 
         Credit credit = creditCardRepository.クレジットカード番号で検索する(creditCard.getCreditCardNumber());
 
-        return credit.無効から有効に戻せるか(validCreditCardStatus, biglobeId);
+        return credit.is無効から有効に戻せる(validCreditCardStatus, biglobeId);
 
     }
 

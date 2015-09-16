@@ -29,7 +29,7 @@ public class CreditCardValidBackService {
 
 
         CreditCardRegisterStatus creditCardRegisterStatus = creditCardCheckService.無効から元に戻せるか確認する(creditCard, biglobeId);
-        if(!creditCardRegisterStatus.登録できるか()){
+        if(!creditCardRegisterStatus.is登録できる()){
             creditCardRepository.送付されてきたクレジットカード情報が無効だと通知する(biglobeId);
             throw new UnsupportedOperationException("新しいクレジットカードが無効です");
         }

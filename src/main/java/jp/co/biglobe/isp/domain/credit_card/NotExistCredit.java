@@ -21,7 +21,7 @@ public class NotExistCredit implements Credit {
     }
 
     @Override
-    public CreditCardRegisterStatus 無効から有効に戻せるか(ValidCreditCardStatus validCreditCardStatus, BiglobeId biglobeId){
+    public CreditCardRegisterStatus is無効から有効に戻せる(ValidCreditCardStatus validCreditCardStatus, BiglobeId biglobeId){
         return CreditCardRegisterStatus.登録不可;
     }
 }

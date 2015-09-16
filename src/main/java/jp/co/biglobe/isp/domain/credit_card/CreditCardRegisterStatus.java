@@ -5,7 +5,7 @@ public enum CreditCardRegisterStatus {
     登録可能,
     登録不可;
 
-    public boolean 登録できるか(){
+    public boolean is登録できる(){
         return this.equals(CreditCardRegisterStatus.登録可能);
     }
 

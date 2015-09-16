@@ -19,8 +19,8 @@ public class Profile {
 
     private final PhoneNumber phoneNumber;
 
-    public boolean _20歳未満か(){
-        return birthday._20歳未満か();
+    public boolean is20歳未満(){
+        return birthday.is20歳未満();
     }
 
 }

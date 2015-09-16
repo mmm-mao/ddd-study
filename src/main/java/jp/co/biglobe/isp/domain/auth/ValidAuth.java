@@ -18,6 +18,10 @@ public class ValidAuth implements Auth{
     private final Password password;
 
 
+    /**
+     * 以下、エンティティのcreate以外の業務ロジックのメソッド群
+     */
+
     @Override
     public boolean is認証OK(Member member){
         return member.is入会中();

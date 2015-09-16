@@ -10,6 +10,9 @@ public class Member {
 
     private final MemberLifeCycle lifeCycle;
 
+    /**
+     * 以下、エンティティのcreateのメソッド群
+     */
     public static Member 入会する(BiglobeId biglobeId){
         return new Member(biglobeId, MemberLifeCycle.入会する());
     }
@@ -19,6 +22,9 @@ public class Member {
     }
 
 
+    /**
+     * 以下、エンティティのcreate以外の業務ロジックのメソッド群
+     */
     public boolean is入会中(){
         return lifeCycle.is入会中();
     }

@@ -9,5 +9,5 @@ public interface Credit {
 
     public CreditCardRegisterStatus is変更できる(ValidCreditCardStatus validCreditCardStatus);
 
-    public CreditCardRegisterStatus 無効から有効に戻せるか(ValidCreditCardStatus validCreditCardStatus, BiglobeId biglobeId);
+    public CreditCardRegisterStatus is無効から有効に戻せる(ValidCreditCardStatus validCreditCardStatus, BiglobeId biglobeId);
 }
