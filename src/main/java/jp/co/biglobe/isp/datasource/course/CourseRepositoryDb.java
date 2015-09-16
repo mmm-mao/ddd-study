@@ -24,7 +24,7 @@ public class CourseRepositoryDb implements CourseRepository {
 
     @Override
     public void 変更予約する(Course course){
-
+        courseQueryMapper.change(course);
     }
 
     @Override

@@ -10,8 +10,8 @@ public class CourseSwitchingDate {
 
     private final LocalDate value;
 
-    public static CourseSwitchingDate 月末日で作成する(){
-        return new CourseSwitchingDate(YearMonth.now().atEndOfMonth());
+    public static CourseSwitchingDate 翌月1日で作成する(){
+        return new CourseSwitchingDate(YearMonth.now().plusMonths(1).atDay(1));
     }
 
 

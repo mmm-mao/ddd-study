@@ -15,6 +15,11 @@ public interface CourseQueryMapper {
             @Param("today") LocalDate today
     );
 
+    public void change(
+            @Param("course") Course course
+    );
+
+
     public List<ValidCourseChangeReserve> findByBiglobeId(
             @Param("biglobeId") BiglobeId biglobeId
     );

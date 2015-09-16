@@ -4,6 +4,7 @@ import jp.co.biglobe.test.util.dbunit.xml.Fixture
 import jp.co.biglobe.test.util.dbunit.xml.FixtureChangeTarget
 
 import java.time.LocalDate
+import java.time.YearMonth
 import java.time.format.DateTimeFormatter
 
 class FixtureCourse {
@@ -58,7 +59,8 @@ class FixtureCourse {
         public static Map コース変更予約中(int rowCount, int eventId) {
             Map<FixtureChangeTarget, String> map = new HashMap<FixtureChangeTarget, String>()
             map.put(new FixtureChangeTarget(RECEIPT_TABLE_NAME, rowCount, EVENT_ID), eventId)
-            map.put(new FixtureChangeTarget(RECEIPT_TABLE_NAME, rowCount, ReceiptInitialData.SWITCHING_DATE), LocalDate.now().plusMonths(1).format(DateTimeFormatter.ofPattern("uuuu-MM-dd")),)
+            map.put(new FixtureChangeTarget(RECEIPT_TABLE_NAME, rowCount, ReceiptInitialData.SWITCHING_DATE), YearMonth.now().plusMonths(1).atDay(1).format(DateTimeFormatter.ofPattern("uuuu-MM-dd")),)
+            map.put(new FixtureChangeTarget(RECEIPT_TABLE_NAME, rowCount, ReceiptInitialData.COURSE), "ニコニコ")
 
             return Fixture.changeValueListForString([(RECEIPT_TABLE_NAME): [(rowCount): ReceiptInitialData.defaultValue]], map)
 

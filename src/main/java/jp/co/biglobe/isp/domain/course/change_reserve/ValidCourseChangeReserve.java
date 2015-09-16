@@ -11,7 +11,7 @@ public class ValidCourseChangeReserve implements CourseChangeReserve{
     private final CourseSwitchingDate courseSwitchingDate;
 
     public static ValidCourseChangeReserve 作成する(ChangeReserveCourse changeReserveCourse){
-        return new ValidCourseChangeReserve(changeReserveCourse, CourseSwitchingDate.月末日で作成する());
+        return new ValidCourseChangeReserve(changeReserveCourse, CourseSwitchingDate.翌月1日で作成する());
     }
 
     @Override

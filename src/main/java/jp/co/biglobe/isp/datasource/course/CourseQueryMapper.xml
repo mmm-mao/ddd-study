@@ -20,6 +20,23 @@
         )
     </insert>
 
+    <insert id="change">
+        INSERT INTO course_receipt_event
+        (
+        user_id,
+        course,
+        switching_date,
+        system_receipt_date_time
+        )
+        VALUES
+        (
+        #{course.biglobeId.value},
+        #{course.courseChangeReserve.changeReserveCourse.courseName},
+        #{course.courseChangeReserve.courseSwitchingDate.value},
+        sysdate
+        )
+    </insert>
+
 
     <select id="findByBiglobeId" resultMap="CourseMap">
         SELECT

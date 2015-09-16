@@ -17,13 +17,7 @@ public class CourseChangeReserveService {
     private CourseChangeReserveCheckService courseChangeReserveCheckService;
 
     @Autowired
-    private MemberRepository memberRepository;
-
-    @Autowired
     private CourseRepository courseRepository;
-
-    @Autowired
-    private BiglobeAuthService biglobeAuthService;
 
     public void 受け付ける(ValidAuth validAuth, ChangeReserveCourse changeReserveCourse){
 
