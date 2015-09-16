@@ -3,7 +3,7 @@ package jp.co.biglobe.isp.domain.auth;
 
 public interface AuthRepository {
 
-    public UserPassword パスワードを作成する();
+    public Password パスワードを作成する();
 
     public void 登録する(ValidAuth validAuth);
 

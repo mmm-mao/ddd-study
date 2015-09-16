@@ -2,15 +2,11 @@ package jp.co.biglobe.isp.service.auth;
 
 
 import jp.co.biglobe.isp.datasource.auth.fixture.FixtureAuth;
-import jp.co.biglobe.isp.datasource.course.fixture.FixtureCourse;
 import jp.co.biglobe.isp.datasource.credit_card.fixture.FixtureCredit;
 import jp.co.biglobe.isp.datasource.member.fixture.FixtureMember;
-import jp.co.biglobe.isp.domain.auth.UserPassword;
+import jp.co.biglobe.isp.domain.auth.Password;
 import jp.co.biglobe.isp.domain.auth.ValidAuth;
-import jp.co.biglobe.isp.domain.course.CourseName;
-import jp.co.biglobe.isp.domain.course.change_reserve.ChangeReserveCourse;
-import jp.co.biglobe.isp.domain.member.UserId;
-import jp.co.biglobe.isp.service.course.CourseChangeReserveCheckService;
+import jp.co.biglobe.isp.domain.member.BiglobeId;
 import jp.co.biglobe.test.util.dbunit.DbUnitTester;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -43,7 +39,7 @@ public class BiglobeAuthServiceTest {
         tester.cleanInsertQuery(FixtureMember.One.入会済み());
         tester.cleanInsertQuery(FixtureCredit.One.有効で登録済み());
 
-        ValidAuth validAuth = new ValidAuth(new UserId("abc12345"), new UserPassword("password"));
+        ValidAuth validAuth = new ValidAuth(new BiglobeId("abc12345"), new Password("password"));
 
 
         biglobeAuthService.サービス利用不可をNGとして認証する(validAuth);

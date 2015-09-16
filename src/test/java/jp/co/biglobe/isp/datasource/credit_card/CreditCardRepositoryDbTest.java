@@ -7,10 +7,8 @@ import jp.co.biglobe.isp.domain.credit_card.CreditCardNumber;
 import jp.co.biglobe.isp.domain.credit_card.CreditCardRepository;
 import jp.co.biglobe.isp.domain.credit_card.ValidCreditCardStatus;
 import jp.co.biglobe.isp.domain.credit_card.ValidCreditEntity;
-import jp.co.biglobe.isp.domain.member.UserId;
+import jp.co.biglobe.isp.domain.member.BiglobeId;
 import jp.co.biglobe.test.util.dbunit.DbUnitTester;
-import org.dbunit.DatabaseUnitException;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,9 +16,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.jdbc.SqlConfig;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
-import java.io.IOException;
-import java.sql.SQLException;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
@@ -45,7 +40,7 @@ public class CreditCardRepositoryDbTest {
 
         ValidCreditEntity validCreditEntity = new ValidCreditEntity(
                 new CreditCardNumber("111-111-1111"),
-                new UserId("abc12345"),
+                new BiglobeId("abc12345"),
                 ValidCreditCardStatus.有効
         );
 
@@ -62,7 +57,7 @@ public class CreditCardRepositoryDbTest {
 
         ValidCreditEntity expected = new ValidCreditEntity(
                 new CreditCardNumber("111-111-1111"),
-                new UserId("abc12345"),
+                new BiglobeId("abc12345"),
                 ValidCreditCardStatus.有効
         );
 

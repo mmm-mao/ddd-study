@@ -4,26 +4,26 @@ import jp.co.biglobe.isp.domain.course.change_reserve.ChangeReserveCourse;
 import jp.co.biglobe.isp.domain.course.change_reserve.CourseChangeReserve;
 import jp.co.biglobe.isp.domain.course.change_reserve.NotExistCourseChangeReserve;
 import jp.co.biglobe.isp.domain.course.change_reserve.ValidCourseChangeReserve;
-import jp.co.biglobe.isp.domain.member.UserId;
+import jp.co.biglobe.isp.domain.member.BiglobeId;
 import jp.co.biglobe.isp.domain.member.MemberEntity;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
 public class Course {
 
-    private final UserId userId;
+    private final BiglobeId biglobeId;
 
     private final CurrentCourse currentCourse;
 
     private final CourseChangeReserve courseChangeReserve;
 
-    public static Course 作成する(UserId userId, CurrentCourse currentCourse){
-        return new Course(userId, currentCourse, new NotExistCourseChangeReserve());
+    public static Course 作成する(BiglobeId biglobeId, CurrentCourse currentCourse){
+        return new Course(biglobeId, currentCourse, new NotExistCourseChangeReserve());
     }
 
 
     public Course コース変更予約する(ChangeReserveCourse changeReserveCourse){
-        return new Course(userId, currentCourse, ValidCourseChangeReserve.作成する(changeReserveCourse));
+        return new Course(biglobeId, currentCourse, ValidCourseChangeReserve.作成する(changeReserveCourse));
     }
 
     public boolean コース変更予約できるか(MemberEntity memberEntity, ChangeReserveCourse changeReserveCourse) {

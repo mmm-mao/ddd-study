@@ -12,7 +12,7 @@ public interface AuthQueryMapper {
             @Param("validAuth") ValidAuth validAuth
     );
 
-    public ValidAuth findByUserIdAndPassword(
+    public ValidAuth findByBiglobeIdAndPassword(
             @Param("validAuth") ValidAuth validAuth
     );
 

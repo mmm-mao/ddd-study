@@ -2,7 +2,7 @@ package jp.co.biglobe.isp.service.credit_card;
 
 import jp.co.biglobe.isp.domain.auth.ValidAuth;
 import jp.co.biglobe.isp.domain.credit_card.*;
-import jp.co.biglobe.isp.domain.member.UserId;
+import jp.co.biglobe.isp.domain.member.BiglobeId;
 import jp.co.biglobe.isp.service.auth.BiglobeAuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,7 +23,7 @@ public class CreditCardChangeService {
 
         検証する(validAuth, creditCard);
 
-        有効に戻す(validAuth.getUserId(), creditCard);
+        有効に戻す(validAuth.getBiglobeId(), creditCard);
 
     }
 
@@ -38,8 +38,8 @@ public class CreditCardChangeService {
         }
     }
 
-    private void 有効に戻す(UserId userId, CreditCard creditCard){
-        ValidCreditEntity validCreditCardEntity = creditCardRepository._biglobeIdで検索する_存在しなかったらエラー(userId);
+    private void 有効に戻す(BiglobeId biglobeId, CreditCard creditCard){
+        ValidCreditEntity validCreditCardEntity = creditCardRepository.biglobeIdで検索する_存在しなかったらエラー(biglobeId);
         creditCardRepository.変更する(validCreditCardEntity.変更する(creditCard.getCreditCardNumber()));
 
     }

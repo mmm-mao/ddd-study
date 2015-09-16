@@ -24,7 +24,7 @@ public class BiglobeAuthService {
 
         サービス利用不可をOKとして認証する(validAuth);
 
-        serviceAvailableCheckService.チェックする(validAuth.getUserId());
+        serviceAvailableCheckService.チェックする(validAuth.getBiglobeId());
 
     }
 
@@ -32,7 +32,7 @@ public class BiglobeAuthService {
 
         Auth auth = authRepository._Idとパスワードで検索する_存在しなかったらエラー(validAuth);
 
-        MemberEntity memberEntity = memberRepository.BiglobeIdで検索する_存在しなかったらエラー(validAuth.getUserId());
+        MemberEntity memberEntity = memberRepository.biglobeIdで検索する_存在しなかったらエラー(validAuth.getBiglobeId());
 
         if(auth.認証OKか(memberEntity)){
             return;

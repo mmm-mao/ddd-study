@@ -12,36 +12,36 @@
         )
         VALUES
         (
-        #{validAuth.userId.value},
-        #{validAuth.userPassword.value},
+        #{validAuth.biglobeId.value},
+        #{validAuth.password.value},
         sysdate
         )
     </insert>
 
-    <select id="findByUserIdAndPassword" resultMap="ValidAuthMap">
+    <select id="findByBiglobeIdAndPassword" resultMap="ValidAuthMap">
         SELECT
         user_id,
         user_password
         FROM auth_event
-        where user_id = #{validAuth.userId.value}
-        AND user_password = #{validAuth.userPassword.value}
+        where user_id = #{validAuth.biglobeId.value}
+        AND user_password = #{validAuth.password.value}
     </select>
 
     <resultMap id="ValidAuthMap" type="jp.co.biglobe.isp.domain.auth.ValidAuth">
         <constructor>
-            <arg javaType="jp.co.biglobe.isp.domain.member.UserId" resultMap="UserIdMap"/>
-            <arg javaType="jp.co.biglobe.isp.domain.auth.UserPassword" resultMap="UserPasswordMap"/>
+            <arg javaType="jp.co.biglobe.isp.domain.member.BiglobeId" resultMap="BiglobeIdMap"/>
+            <arg javaType="jp.co.biglobe.isp.domain.auth.Password" resultMap="PasswordMap"/>
         </constructor>
     </resultMap>
 
 
-    <resultMap id="UserIdMap" type="jp.co.biglobe.isp.domain.member.UserId">
+    <resultMap id="BiglobeIdMap" type="jp.co.biglobe.isp.domain.member.BiglobeId">
         <constructor>
             <arg column="user_id" javaType="String" jdbcType="VARCHAR"/>
         </constructor>
     </resultMap>
 
-    <resultMap id="UserPasswordMap" type="jp.co.biglobe.isp.domain.auth.UserPassword">
+    <resultMap id="PasswordMap" type="jp.co.biglobe.isp.domain.auth.Password">
         <constructor>
             <arg column="user_password" javaType="String" jdbcType="VARCHAR"/>
         </constructor>

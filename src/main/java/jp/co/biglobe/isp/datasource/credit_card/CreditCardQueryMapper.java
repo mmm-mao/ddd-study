@@ -1,12 +1,9 @@
 package jp.co.biglobe.isp.datasource.credit_card;
 
 import jp.co.biglobe.isp.domain.credit_card.CreditCardNumber;
-import jp.co.biglobe.isp.domain.credit_card.CreditEntity;
 import jp.co.biglobe.isp.domain.credit_card.ValidCreditEntity;
-import jp.co.biglobe.isp.domain.member.UserId;
+import jp.co.biglobe.isp.domain.member.BiglobeId;
 import org.apache.ibatis.annotations.Param;
-
-import java.util.List;
 
 public interface CreditCardQueryMapper {
 
@@ -22,8 +19,8 @@ public interface CreditCardQueryMapper {
             @Param("creditCardNumber") CreditCardNumber creditCardNumber
     );
 
-    public ValidCreditEntity findByUserId(
-            @Param("userId") UserId userId
+    public ValidCreditEntity findByBiglobeId(
+            @Param("biglobeId") BiglobeId biglobeId
     );
 
 }

@@ -2,9 +2,7 @@ package jp.co.biglobe.isp.datasource.course;
 
 import jp.co.biglobe.isp.domain.course.Course;
 import jp.co.biglobe.isp.domain.course.change_reserve.ValidCourseChangeReserve;
-import jp.co.biglobe.isp.domain.credit_card.CreditCardNumber;
-import jp.co.biglobe.isp.domain.credit_card.ValidCreditEntity;
-import jp.co.biglobe.isp.domain.member.UserId;
+import jp.co.biglobe.isp.domain.member.BiglobeId;
 import org.apache.ibatis.annotations.Param;
 
 import java.time.LocalDate;
@@ -17,8 +15,8 @@ public interface CourseQueryMapper {
             @Param("today") LocalDate today
     );
 
-    public List<ValidCourseChangeReserve> findByUserId(
-            @Param("userId") UserId userId
+    public List<ValidCourseChangeReserve> findByBiglobeId(
+            @Param("biglobeId") BiglobeId biglobeId
     );
 
 }

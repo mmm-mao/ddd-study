@@ -19,7 +19,7 @@
         )
         VALUES
         (
-        #{memberProfileEntity.userId.value},
+        #{memberProfileEntity.biglobeId.value},
         #{memberProfileEntity.profile.name.value},
         #{memberProfileEntity.profile.nameKana.value},
         #{memberProfileEntity.profile.gender},
@@ -41,7 +41,7 @@
         )
         VALUES
         (
-        #{memberProfileEntity.userId.value},
+        #{memberProfileEntity.biglobeId.value},
         #{memberProfileEntity.mailAddress.value},
         sysdate
         )

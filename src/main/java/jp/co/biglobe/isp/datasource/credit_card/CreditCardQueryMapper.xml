@@ -13,7 +13,7 @@
         VALUES
         (
         #{validCreditEntity.creditCardNumber.value},
-        #{validCreditEntity.userId.value},
+        #{validCreditEntity.biglobeId.value},
         sysdate
         )
     </insert>
@@ -41,10 +41,10 @@
         where register.credit_card_number = #{creditCardNumber.value}
     </select>
 
-    <select id="findByUserId" resultMap="_CreditEntityMap">
+    <select id="findByBiglobeId" resultMap="_CreditEntityMap">
         <include refid="selectColumnsDefine"/>
         <include refid="fromDefine" />
-        where register.user_id = #{userId.value}
+        where register.user_id = #{biglobeId.value}
     </select>
 
     <sql id="selectColumnsDefine">
@@ -62,7 +62,7 @@
     <resultMap id="_CreditEntityMap" type="jp.co.biglobe.isp.domain.credit_card.ValidCreditEntity">
         <constructor>
             <arg javaType="jp.co.biglobe.isp.domain.credit_card.CreditCardNumber" resultMap="CreditCardNumberMap"/>
-            <arg javaType="jp.co.biglobe.isp.domain.member.UserId" resultMap="UserIdMap"/>
+            <arg javaType="jp.co.biglobe.isp.domain.member.BiglobeId" resultMap="BiglobeIdMap"/>
             <arg javaType="jp.co.biglobe.isp.domain.credit_card.ValidCreditCardStatus"
                  column="valid_credit_card_status"
                  typeHandler="org.apache.ibatis.type.EnumTypeHandler"/>
@@ -76,7 +76,7 @@
     </resultMap>
 
 
-    <resultMap id="UserIdMap" type="jp.co.biglobe.isp.domain.member.UserId">
+    <resultMap id="BiglobeIdMap" type="jp.co.biglobe.isp.domain.member.BiglobeId">
         <constructor>
             <arg column="user_id" javaType="String" jdbcType="VARCHAR"/>
         </constructor>

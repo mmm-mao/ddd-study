@@ -11,12 +11,12 @@ import jp.co.biglobe.isp.datasource.member.assertion.MemberAssert;
 import jp.co.biglobe.isp.datasource.member.fixture.FixtureMember;
 import jp.co.biglobe.isp.datasource.member_profile.assertion.MemberProfileAssert;
 import jp.co.biglobe.isp.datasource.member_profile.fixture.FixtureMemberProfile;
-import jp.co.biglobe.isp.domain.auth.UserPassword;
+import jp.co.biglobe.isp.domain.auth.Password;
 import jp.co.biglobe.isp.domain.auth.ValidAuth;
 import jp.co.biglobe.isp.domain.course.CourseName;
 import jp.co.biglobe.isp.domain.course.CurrentCourse;
 import jp.co.biglobe.isp.domain.credit_card.*;
-import jp.co.biglobe.isp.domain.member.UserId;
+import jp.co.biglobe.isp.domain.member.BiglobeId;
 import jp.co.biglobe.isp.domain.member.member_life_cycle.sign_up.HopeMailAddress;
 import jp.co.biglobe.isp.domain.member.member_life_cycle.sign_up.SignUpRequest;
 import jp.co.biglobe.isp.domain.member_profile.profile.*;
@@ -27,8 +27,6 @@ import jp.co.biglobe.isp.domain.member_profile.profile.phone_number.ContractPhon
 import jp.co.biglobe.isp.domain.member_profile.profile.phone_number.DaytimePhoneNumber;
 import jp.co.biglobe.isp.domain.member_profile.profile.phone_number.PhoneNumber;
 import jp.co.biglobe.test.util.dbunit.DbUnitTester;
-import org.dbunit.DatabaseUnitException;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,8 +35,6 @@ import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.jdbc.SqlConfig;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import java.io.IOException;
-import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.YearMonth;
 
@@ -84,7 +80,7 @@ public class SignUpServiceTest {
 
         ValidAuth actual =  signUpService.受け付ける(signUpRequest);
 
-        assertThat(actual, is(new ValidAuth(new UserId("abc12345"), new UserPassword("password"))));
+        assertThat(actual, is(new ValidAuth(new BiglobeId("abc12345"), new Password("password"))));
 
         MemberAssert memberAssert = new MemberAssert(tester);
         memberAssert.assertTableWithAllColumns(FixtureMember.One.入会済み());

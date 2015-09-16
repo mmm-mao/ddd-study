@@ -13,7 +13,7 @@
         )
         VALUES
         (
-        #{course.userId.value},
+        #{course.biglobeId.value},
         #{course.currentCourse.courseName},
         #{today},
         sysdate
@@ -21,12 +21,12 @@
     </insert>
 
 
-    <select id="findByUserId" resultMap="CourseMap">
+    <select id="findByBiglobeId" resultMap="CourseMap">
         SELECT
         course,
         switching_date
         FROM course_receipt_event
-        where user_id = #{userId.value}
+        where user_id = #{biglobeId.value}
         ORDER BY switching_date DESC
     </select>
 

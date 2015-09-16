@@ -1,13 +1,13 @@
 package jp.co.biglobe.isp.domain.course;
 
 import jp.co.biglobe.isp.domain.course.change_reserve.ValidCourseChangeReserve;
-import jp.co.biglobe.isp.domain.member.UserId;
+import jp.co.biglobe.isp.domain.member.BiglobeId;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
 public class CourseFactory {
 
-    private final UserId userId;
+    private final BiglobeId biglobeId;
 
     private final ValidCourseChangeReserve latest;
 
@@ -16,10 +16,10 @@ public class CourseFactory {
     public Course createCourse(){
 
         if(latest.コース変更を申し込み中か()){
-            return new Course(userId, oneBefore.toCurrentCourse(), latest);
+            return new Course(biglobeId, oneBefore.toCurrentCourse(), latest);
         }
 
-        return Course.作成する(userId, latest.toCurrentCourse());
+        return Course.作成する(biglobeId, latest.toCurrentCourse());
 
 
     }

@@ -6,16 +6,16 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class MemberEntity {
 
-    private final UserId userId;
+    private final BiglobeId biglobeId;
 
     private final MemberLifeCycle lifeCycle;
 
-    public static MemberEntity 入会する(UserId userId){
-        return new MemberEntity(userId, MemberLifeCycle.入会する());
+    public static MemberEntity 入会する(BiglobeId biglobeId){
+        return new MemberEntity(biglobeId, MemberLifeCycle.入会する());
     }
 
     public MemberEntity 退会する(){
-        return new MemberEntity(userId, lifeCycle.退会する());
+        return new MemberEntity(biglobeId, lifeCycle.退会する());
     }
 
 

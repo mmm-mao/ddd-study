@@ -2,7 +2,7 @@ package jp.co.biglobe.isp.datasource.credit_card;
 
 
 import jp.co.biglobe.isp.domain.credit_card.*;
-import jp.co.biglobe.isp.domain.member.UserId;
+import jp.co.biglobe.isp.domain.member.BiglobeId;
 import jp.co.biglobe.outsource.domain.クレジットカードのドメイン;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -33,8 +33,8 @@ public class CreditCardRepositoryDb implements CreditCardRepository {
     }
 
     @Override
-    public ValidCreditEntity _biglobeIdで検索する_存在しなかったらエラー(UserId userId) {
-        return judgeValidOrException(creditCardQueryMapper.findByUserId(userId));
+    public ValidCreditEntity biglobeIdで検索する_存在しなかったらエラー(BiglobeId biglobeId) {
+        return judgeValidOrException(creditCardQueryMapper.findByBiglobeId(biglobeId));
     }
 
     private ValidCreditEntity judgeValidOrException(ValidCreditEntity validCreditEntity) {
@@ -80,10 +80,10 @@ public class CreditCardRepositoryDb implements CreditCardRepository {
     }
 
     @Override
-    public void 送付されてきたクレジットカード情報が無効だと通知する(UserId userId) {
+    public void 送付されてきたクレジットカード情報が無効だと通知する(BiglobeId biglobeId) {
     }
 
     @Override
-    public void 無効になったことを通知する(UserId userId) {
+    public void 無効になったことを通知する(BiglobeId biglobeId) {
     }
 }

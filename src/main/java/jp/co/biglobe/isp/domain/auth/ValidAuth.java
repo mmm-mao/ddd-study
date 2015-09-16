@@ -1,6 +1,6 @@
 package jp.co.biglobe.isp.domain.auth;
 
-import jp.co.biglobe.isp.domain.member.UserId;
+import jp.co.biglobe.isp.domain.member.BiglobeId;
 import jp.co.biglobe.isp.domain.member.MemberEntity;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -13,9 +13,9 @@ import lombok.ToString;
 public class ValidAuth implements Auth{
 
     @Getter
-    private final UserId userId;
+    private final BiglobeId biglobeId;
 
-    private final UserPassword userPassword;
+    private final Password password;
 
 
     @Override

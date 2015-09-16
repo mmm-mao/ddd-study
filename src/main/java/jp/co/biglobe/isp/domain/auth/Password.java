@@ -7,7 +7,7 @@ import lombok.ToString;
 @ToString(includeFieldNames = false)
 @EqualsAndHashCode
 @AllArgsConstructor
-public class UserPassword {
+public class Password {
 
     private final String value;
 
