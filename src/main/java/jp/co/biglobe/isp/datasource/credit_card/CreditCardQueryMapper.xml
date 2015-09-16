@@ -36,16 +36,28 @@
 
 
     <select id="findByCreditCard" resultMap="_CreditEntityMap">
+        <include refid="selectColumnsDefine"/>
+        <include refid="fromDefine" />
+        where register.credit_card_number = #{creditCardNumber.value}
+    </select>
+
+    <select id="findByUserId" resultMap="_CreditEntityMap">
+        <include refid="selectColumnsDefine"/>
+        <include refid="fromDefine" />
+        where register.user_id = #{userId.value}
+    </select>
+
+    <sql id="selectColumnsDefine">
         SELECT
         register.credit_card_number,
         user_id,
         valid.valid_credit_card_status
+    </sql>
+
+    <sql id="fromDefine">
         FROM credit_register_event register
         LEFT JOIN credit_valid_event_latest_v valid ON register.credit_card_number = valid.credit_card_number
-        where register.credit_card_number = #{creditCardNumber.value}
-        ORDER BY credit_card_number ASC
-    </select>
-
+    </sql>
 
     <resultMap id="_CreditEntityMap" type="jp.co.biglobe.isp.domain.credit_card.ValidCreditEntity">
         <constructor>

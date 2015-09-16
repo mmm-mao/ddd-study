@@ -29,18 +29,21 @@ public class CreditCardRepositoryDb implements CreditCardRepository {
 
     @Override
     public ValidCreditEntity クレジットカード番号で検索する_存在しなかったらエラー(CreditCardNumber creditCardNumber) {
-        return creditCardQueryMapper.findByCreditCard(creditCardNumber);
+        return judgeValidOrException(creditCardQueryMapper.findByCreditCard(creditCardNumber));
     }
 
     @Override
-    public ValidCreditEntity _biglobeIdで検索する(UserId userId) {
-        return new ValidCreditEntity(
-                new CreditCardNumber("111-111-1111"),
-                userId,
-                ValidCreditCardStatus.有効
-        );
+    public ValidCreditEntity _biglobeIdで検索する_存在しなかったらエラー(UserId userId) {
+        return judgeValidOrException(creditCardQueryMapper.findByUserId(userId));
     }
 
+    private ValidCreditEntity judgeValidOrException(ValidCreditEntity validCreditEntity) {
+
+        if (validCreditEntity == null) {
+            throw new UnsupportedOperationException("クレジットカードが存在しない");
+        }
+        return validCreditEntity;
+    }
 
     @Override
     public ValidCreditCardStatus 有効かチェックする(CreditCard creditCard) {

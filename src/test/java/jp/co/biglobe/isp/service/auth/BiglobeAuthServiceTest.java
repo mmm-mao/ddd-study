@@ -41,7 +41,7 @@ public class BiglobeAuthServiceTest {
 
         tester.cleanInsertQuery(FixtureAuth.One.登録済み());
         tester.cleanInsertQuery(FixtureMember.One.入会済み());
-
+        tester.cleanInsertQuery(FixtureCredit.One.有効で登録済み());
 
         ValidAuth validAuth = new ValidAuth(new UserId("abc12345"), new UserPassword("password"));
 

@@ -38,7 +38,7 @@ public class BiglobeAuthService {
             return;
         }
 
-        throw new RuntimeException("認証できません");
+        throw new UnsupportedOperationException("認証できません");
 
     }
 

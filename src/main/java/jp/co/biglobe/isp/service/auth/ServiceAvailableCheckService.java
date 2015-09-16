@@ -14,10 +14,10 @@ public class ServiceAvailableCheckService {
 
     public void チェックする(UserId userId){
 
-        ValidCreditEntity validCreditCardEntity = creditCardRepository._biglobeIdで検索する(userId);
+        ValidCreditEntity validCreditCardEntity = creditCardRepository._biglobeIdで検索する_存在しなかったらエラー(userId);
 
         if(validCreditCardEntity.無効か()){
-            throw new RuntimeException("サービスが利用できません");
+            throw new UnsupportedOperationException("サービスが利用できません");
         }
 
 

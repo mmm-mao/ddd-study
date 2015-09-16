@@ -115,7 +115,7 @@ public class CourseChangeReserveCheckServiceTest {
     public void コース変更予約中なのでNG() throws Exception {
 
         tester.cleanInsertQuery(FixtureAuth.One.登録済み());
-        tester.cleanInsertQuery(FixtureMember.One.退会済み());
+        tester.cleanInsertQuery(FixtureMember.One.入会済み());
         tester.cleanInsertQuery(FixtureCredit.One.有効で登録済み());
         tester.cleanInsertQuery(FixtureCourse.Two.コース変更予約中());
 

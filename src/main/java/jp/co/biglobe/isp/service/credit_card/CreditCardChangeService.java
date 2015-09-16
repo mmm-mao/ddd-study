@@ -39,7 +39,7 @@ public class CreditCardChangeService {
     }
 
     private void 有効に戻す(UserId userId, CreditCard creditCard){
-        ValidCreditEntity validCreditCardEntity = creditCardRepository._biglobeIdで検索する(userId);
+        ValidCreditEntity validCreditCardEntity = creditCardRepository._biglobeIdで検索する_存在しなかったらエラー(userId);
         creditCardRepository.変更する(validCreditCardEntity.変更する(creditCard.getCreditCardNumber()));
 
     }

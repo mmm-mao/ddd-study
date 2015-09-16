@@ -9,7 +9,7 @@ public interface CreditCardRepository {
 
     public ValidCreditEntity クレジットカード番号で検索する_存在しなかったらエラー(CreditCardNumber creditCardNumber);
 
-    public ValidCreditEntity _biglobeIdで検索する(UserId userId);
+    public ValidCreditEntity _biglobeIdで検索する_存在しなかったらエラー(UserId userId);
 
     public ValidCreditCardStatus 有効かチェックする(CreditCard creditCard);
 

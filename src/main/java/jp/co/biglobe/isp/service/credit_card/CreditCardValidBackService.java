@@ -37,7 +37,7 @@ public class CreditCardValidBackService {
     }
 
     private void 有効に戻す(UserId userId, CreditCard creditCard){
-        ValidCreditEntity validCreditCardEntity = creditCardRepository._biglobeIdで検索する(userId);
+        ValidCreditEntity validCreditCardEntity = creditCardRepository._biglobeIdで検索する_存在しなかったらエラー(userId);
         creditCardRepository.有効に戻す(validCreditCardEntity.有効に戻す(creditCard.getCreditCardNumber()));
 
     }
