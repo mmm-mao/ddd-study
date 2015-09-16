@@ -15,6 +15,14 @@ public interface CreditCardQueryMapper {
             @Param("validCreditEntity") ValidCreditEntity validCreditEntity
     );
 
+    public void delete(
+            @Param("creditCardNumber") CreditCardNumber creditCardNumber
+    );
+
+    public void validDelete(
+            @Param("creditCardNumber") CreditCardNumber creditCardNumber
+    );
+
     public ValidCreditEntity findByCreditCard(
             @Param("creditCardNumber") CreditCardNumber creditCardNumber
     );

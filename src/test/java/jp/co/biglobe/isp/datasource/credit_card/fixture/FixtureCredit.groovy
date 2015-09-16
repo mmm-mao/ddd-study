@@ -72,7 +72,6 @@ class FixtureCredit {
         }
 
 
-
     }
 
 
@@ -85,6 +84,10 @@ class FixtureCredit {
 
         public static Map 有効で登録済み() {
             return Default.有効で登録済み(oneRowCount, creditCardNumber, creditValidEventId)
+        }
+
+        public static Map 有効で変更済み() {
+            return Default.有効で登録済み(oneRowCount, "111-111-1112", "2")
         }
 
 

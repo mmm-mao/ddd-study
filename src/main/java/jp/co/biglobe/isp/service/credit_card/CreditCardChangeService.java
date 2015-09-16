@@ -23,7 +23,7 @@ public class CreditCardChangeService {
 
         検証する(validAuth, creditCard);
 
-        有効に戻す(validAuth.getBiglobeId(), creditCard);
+        変更する(validAuth.getBiglobeId(), creditCard);
 
     }
 
@@ -34,11 +34,11 @@ public class CreditCardChangeService {
 
         CreditCardRegisterStatus creditCardRegisterStatus = creditCardCheckService.受け付ける(creditCard);
         if(!creditCardRegisterStatus.登録できるか()){
-            throw new RuntimeException("新しいクレジットカードが無効です");
+            throw new UnsupportedOperationException("新しいクレジットカードが無効です");
         }
     }
 
-    private void 有効に戻す(BiglobeId biglobeId, CreditCard creditCard){
+    private void 変更する(BiglobeId biglobeId, CreditCard creditCard){
         ValidCreditEntity validCreditCardEntity = creditCardRepository.biglobeIdで検索する_存在しなかったらエラー(biglobeId);
         creditCardRepository.変更する(validCreditCardEntity.変更する(creditCard.getCreditCardNumber()));
 

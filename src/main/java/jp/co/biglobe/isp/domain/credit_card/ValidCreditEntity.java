@@ -11,6 +11,7 @@ import lombok.ToString;
 @AllArgsConstructor
 public class ValidCreditEntity implements CreditEntity {
 
+    @Getter
     private final CreditCardNumber creditCardNumber;
 
     @Getter

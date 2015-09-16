@@ -33,6 +33,16 @@
         )
     </insert>
 
+    <delete id="delete">
+        DELETE FROM credit_register_event
+        WHERE credit_card_number = #{creditCardNumber.value}
+    </delete>
+
+    <delete id="validDelete">
+        DELETE FROM credit_valid_event
+        WHERE credit_card_number = #{creditCardNumber.value}
+    </delete>
+
 
 
     <select id="findByCreditCard" resultMap="_CreditEntityMap">

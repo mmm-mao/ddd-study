@@ -77,6 +77,16 @@ public class CreditCardRepositoryDb implements CreditCardRepository {
 
     @Override
     public void 変更する(ValidCreditEntity validCreditCardEntity) {
+        削除する(validCreditCardEntity);
+
+        登録する(validCreditCardEntity);
+    }
+
+    private void 削除する(ValidCreditEntity validCreditCardEntity){
+
+        ValidCreditEntity validCreditEntity = biglobeIdで検索する_存在しなかったらエラー(validCreditCardEntity.getBiglobeId());
+        creditCardQueryMapper.validDelete(validCreditEntity.getCreditCardNumber());
+        creditCardQueryMapper.delete(validCreditEntity.getCreditCardNumber());
     }
 
     @Override
