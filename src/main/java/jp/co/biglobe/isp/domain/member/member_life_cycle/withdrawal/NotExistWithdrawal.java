@@ -6,7 +6,12 @@ import lombok.AllArgsConstructor;
 public class NotExistWithdrawal implements Withdrawal{
 
     @Override
-    public boolean 申込済みか(){
+    public boolean is申込済み(){
         return false;
+    }
+
+    @Override
+    public boolean is退会できる(){
+        return true;
     }
 }

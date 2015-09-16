@@ -44,7 +44,7 @@
     </select>
 
 
-    <resultMap id="MemberEntityMap" type="jp.co.biglobe.isp.domain.member.MemberEntity">
+    <resultMap id="MemberEntityMap" type="jp.co.biglobe.isp.domain.member.Member">
         <constructor>
             <arg javaType="jp.co.biglobe.isp.domain.member.BiglobeId" resultMap="BiglobeIdMap"/>
             <arg javaType="jp.co.biglobe.isp.domain.member.member_life_cycle.MemberLifeCycle" resultMap="MemberLifeCycleMap"/>

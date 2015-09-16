@@ -1,11 +1,9 @@
 package jp.co.biglobe.isp.service.auth;
 
 import jp.co.biglobe.isp.domain.auth.ValidAuth;
-import jp.co.biglobe.isp.domain.auth.AuthRepository;
 import jp.co.biglobe.isp.domain.course.Course;
 import jp.co.biglobe.isp.domain.course.CourseRepository;
-import jp.co.biglobe.isp.domain.credit_card.CreditCardRepository;
-import jp.co.biglobe.isp.domain.member.MemberEntity;
+import jp.co.biglobe.isp.domain.member.Member;
 import jp.co.biglobe.isp.domain.member.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,12 +26,12 @@ public class NikoNikoAuthService {
 
         biglobeAuthService.サービス利用不可をNGとして認証する(validAuth);
 
-        MemberEntity memberEntity = memberRepository.biglobeIdで検索する_存在しなかったらエラー(validAuth.getBiglobeId());
+        Member member = memberRepository.biglobeIdで検索する_存在しなかったらエラー(validAuth.getBiglobeId());
 
         Course course = courseRepository.biglobeIdで検索する_存在しなかったらエラー(validAuth.getBiglobeId());
 
 
-        if(course.ニコニコ動画認証OKか(memberEntity)){
+        if(course.isニコニコ動画認証OK(member)){
             return;
         }
 

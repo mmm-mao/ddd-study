@@ -17,27 +17,27 @@ public class CreditCardRepositoryDb implements CreditCardRepository {
     private CreditCardQueryMapper creditCardQueryMapper;
 
     @Override
-    public CreditEntity クレジットカード番号で検索する(CreditCardNumber creditCardNumber) {
-        ValidCreditEntity validCreditEntity = creditCardQueryMapper.findByCreditCard(creditCardNumber);
+    public Credit クレジットカード番号で検索する(CreditCardNumber creditCardNumber) {
+        ValidCredit validCreditEntity = creditCardQueryMapper.findByCreditCard(creditCardNumber);
 
         if(validCreditEntity == null){
-            return new NotExistCreditEntity();
+            return new NotExistCredit();
         }
 
         return validCreditEntity;
     }
 
     @Override
-    public ValidCreditEntity クレジットカード番号で検索する_存在しなかったらエラー(CreditCardNumber creditCardNumber) {
+    public ValidCredit クレジットカード番号で検索する_存在しなかったらエラー(CreditCardNumber creditCardNumber) {
         return judgeValidOrException(creditCardQueryMapper.findByCreditCard(creditCardNumber));
     }
 
     @Override
-    public ValidCreditEntity biglobeIdで検索する_存在しなかったらエラー(BiglobeId biglobeId) {
+    public ValidCredit biglobeIdで検索する_存在しなかったらエラー(BiglobeId biglobeId) {
         return judgeValidOrException(creditCardQueryMapper.findByBiglobeId(biglobeId));
     }
 
-    private ValidCreditEntity judgeValidOrException(ValidCreditEntity validCreditEntity) {
+    private ValidCredit judgeValidOrException(ValidCredit validCreditEntity) {
 
         if (validCreditEntity == null) {
             throw new UnsupportedOperationException("クレジットカードが存在しない");
@@ -61,32 +61,32 @@ public class CreditCardRepositoryDb implements CreditCardRepository {
     }
 
     @Override
-    public void 登録する(ValidCreditEntity validCreditCardEntity) {
+    public void 登録する(ValidCredit validCreditCardEntity) {
 
         creditCardQueryMapper.register(validCreditCardEntity);
         creditCardQueryMapper.validRegister(validCreditCardEntity);
     }
 
     @Override
-    public void 有効に戻す(ValidCreditEntity validCreditCardEntity) {
+    public void 有効に戻す(ValidCredit validCreditCardEntity) {
         creditCardQueryMapper.validRegister(validCreditCardEntity);
     }
 
     @Override
-    public void 無効にする(ValidCreditEntity validCreditCardEntity) {
+    public void 無効にする(ValidCredit validCreditCardEntity) {
         creditCardQueryMapper.validRegister(validCreditCardEntity);
     }
 
     @Override
-    public void 変更する(ValidCreditEntity validCreditCardEntity) {
+    public void 変更する(ValidCredit validCreditCardEntity) {
         削除する(validCreditCardEntity);
 
         登録する(validCreditCardEntity);
     }
 
-    private void 削除する(ValidCreditEntity validCreditCardEntity){
+    private void 削除する(ValidCredit validCreditCardEntity){
 
-        ValidCreditEntity validCreditEntity = biglobeIdで検索する_存在しなかったらエラー(validCreditCardEntity.getBiglobeId());
+        ValidCredit validCreditEntity = biglobeIdで検索する_存在しなかったらエラー(validCreditCardEntity.getBiglobeId());
         creditCardQueryMapper.validDelete(validCreditEntity.getCreditCardNumber());
         creditCardQueryMapper.delete(validCreditEntity.getCreditCardNumber());
     }

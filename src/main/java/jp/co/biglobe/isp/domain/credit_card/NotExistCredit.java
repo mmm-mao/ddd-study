@@ -4,7 +4,7 @@ import jp.co.biglobe.isp.domain.member.BiglobeId;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
-public class NotExistCreditEntity implements CreditEntity {
+public class NotExistCredit implements Credit {
 
     @Override
     public boolean exist(){
@@ -12,8 +12,8 @@ public class NotExistCreditEntity implements CreditEntity {
     }
 
     @Override
-    public CreditCardRegisterStatus 変更できるか(ValidCreditCardStatus validCreditCardStatus){
-        if(validCreditCardStatus.無効か()){
+    public CreditCardRegisterStatus is変更できる(ValidCreditCardStatus validCreditCardStatus){
+        if(validCreditCardStatus.is無効()){
             return CreditCardRegisterStatus.登録不可;
         }
 

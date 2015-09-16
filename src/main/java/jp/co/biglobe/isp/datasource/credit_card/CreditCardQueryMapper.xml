@@ -69,7 +69,7 @@
         LEFT JOIN credit_valid_event_latest_v valid ON register.credit_card_number = valid.credit_card_number
     </sql>
 
-    <resultMap id="_CreditEntityMap" type="jp.co.biglobe.isp.domain.credit_card.ValidCreditEntity">
+    <resultMap id="_CreditEntityMap" type="jp.co.biglobe.isp.domain.credit_card.ValidCredit">
         <constructor>
             <arg javaType="jp.co.biglobe.isp.domain.credit_card.CreditCardNumber" resultMap="CreditCardNumberMap"/>
             <arg javaType="jp.co.biglobe.isp.domain.member.BiglobeId" resultMap="BiglobeIdMap"/>

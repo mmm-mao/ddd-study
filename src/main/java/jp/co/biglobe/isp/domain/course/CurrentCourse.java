@@ -1,18 +1,15 @@
 package jp.co.biglobe.isp.domain.course;
 
-import jp.co.biglobe.isp.domain.course.change_reserve.ChangeReserveCourse;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 
 @AllArgsConstructor
 public class CurrentCourse {
 
+    @Getter
     private final CourseName courseName;
 
-    public boolean 変更を申し込むコースが適用中のコースと同じか(ChangeReserveCourse changeReserveCourse){
-        return courseName.equals(changeReserveCourse.getCourseName());
-    }
-
-    public boolean ニコニココースか(){
+    public boolean isニコニココース(){
         return courseName.ニコニココースか();
     }
     

@@ -6,12 +6,12 @@ import jp.co.biglobe.isp.domain.auth.Password;
 import jp.co.biglobe.isp.domain.course.Course;
 import jp.co.biglobe.isp.domain.course.CourseRepository;
 import jp.co.biglobe.isp.domain.credit_card.CreditCardRepository;
-import jp.co.biglobe.isp.domain.credit_card.ValidCreditEntity;
+import jp.co.biglobe.isp.domain.credit_card.ValidCredit;
 import jp.co.biglobe.isp.domain.member.BiglobeId;
-import jp.co.biglobe.isp.domain.member.MemberEntity;
+import jp.co.biglobe.isp.domain.member.Member;
 import jp.co.biglobe.isp.domain.member.MemberRepository;
 import jp.co.biglobe.isp.domain.member.member_life_cycle.sign_up.SignUpRequest;
-import jp.co.biglobe.isp.domain.member_profile.MemberProfileEntity;
+import jp.co.biglobe.isp.domain.member_profile.MemberProfile;
 import jp.co.biglobe.isp.domain.member_profile.MemberProfileRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -56,17 +56,17 @@ public class SignUpService {
     }
 
     private void 入会する(BiglobeId biglobeId){
-        MemberEntity memberEntity = MemberEntity.入会する(biglobeId);
-        memberRepository.入会する(memberEntity);
+        Member member = Member.入会する(biglobeId);
+        memberRepository.入会する(member);
     }
 
     private void プロフィールを登録する(BiglobeId biglobeId, SignUpRequest signUpRequest){
-        MemberProfileEntity memberProfileEntity = MemberProfileEntity.登録する(biglobeId, signUpRequest);
-        memberProfileRepository.登録する(memberProfileEntity);
+        MemberProfile memberProfile = MemberProfile.登録する(biglobeId, signUpRequest);
+        memberProfileRepository.登録する(memberProfile);
     }
 
     private void クレジットカードを登録する(BiglobeId biglobeId, SignUpRequest signUpRequest){
-        ValidCreditEntity validCreditCardEntity = ValidCreditEntity.作成する(signUpRequest.getCreditCardNumber(), biglobeId);
+        ValidCredit validCreditCardEntity = ValidCredit.作成する(signUpRequest.getCreditCardNumber(), biglobeId);
         creditCardRepository.登録する(validCreditCardEntity);
     }
 

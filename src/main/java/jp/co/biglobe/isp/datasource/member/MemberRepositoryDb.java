@@ -2,7 +2,7 @@ package jp.co.biglobe.isp.datasource.member;
 
 
 import jp.co.biglobe.isp.domain.member.BiglobeId;
-import jp.co.biglobe.isp.domain.member.MemberEntity;
+import jp.co.biglobe.isp.domain.member.Member;
 import jp.co.biglobe.isp.domain.member.MemberRepository;
 import jp.co.biglobe.outsource.domain.BIGLOBEIDとBIGLOBEパスワードのドメイン;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,22 +23,22 @@ public class MemberRepositoryDb implements MemberRepository {
     }
 
     @Override
-    public void 入会する(MemberEntity memberEntity){
-        memberQueryMapper.signUp(memberEntity);
+    public void 入会する(Member member){
+        memberQueryMapper.signUp(member);
     }
 
-    public void 退会する(MemberEntity memberEntity){
-        memberQueryMapper.withdrawal(memberEntity);
+    public void 退会する(Member member){
+        memberQueryMapper.withdrawal(member);
     }
 
     @Override
-    public MemberEntity biglobeIdで検索する_存在しなかったらエラー(BiglobeId biglobeId){
-        MemberEntity memberEntity = memberQueryMapper.findByBiglobeId(biglobeId);
-        if(memberEntity == null){
+    public Member biglobeIdで検索する_存在しなかったらエラー(BiglobeId biglobeId){
+        Member member = memberQueryMapper.findByBiglobeId(biglobeId);
+        if(member == null){
             throw new UnsupportedOperationException("指定された会員が存在しない");
         }
 
-        return memberEntity;
+        return member;
     }
 
 

@@ -15,7 +15,7 @@ public class CourseFactory {
 
     public Course createCourse(){
 
-        if(latest.コース変更を申し込み中か()){
+        if(latest.isコース変更を申し込み中()){
             return new Course(biglobeId, oneBefore.toCurrentCourse(), latest);
         }
 

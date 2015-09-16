@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 
 public interface CourseChangeReserve {
 
-    public boolean コース変更を申し込み中か();
+    public boolean isコース変更を申し込み中();
 
 
 }

@@ -20,7 +20,7 @@ public class CreditCardValidBackService {
 
         検証する(biglobeId, creditCard);
 
-        有効に戻す(biglobeId, creditCard);
+        有効に戻す(biglobeId);
 
     }
 
@@ -36,9 +36,9 @@ public class CreditCardValidBackService {
 
     }
 
-    private void 有効に戻す(BiglobeId biglobeId, CreditCard creditCard){
-        ValidCreditEntity validCreditCardEntity = creditCardRepository.biglobeIdで検索する_存在しなかったらエラー(biglobeId);
-        creditCardRepository.有効に戻す(validCreditCardEntity.有効に戻す(creditCard.getCreditCardNumber()));
+    private void 有効に戻す(BiglobeId biglobeId){
+        ValidCredit validCreditCardEntity = creditCardRepository.biglobeIdで検索する_存在しなかったらエラー(biglobeId);
+        creditCardRepository.有効に戻す(validCreditCardEntity.有効に戻す());
 
     }
 

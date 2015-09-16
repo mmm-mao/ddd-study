@@ -3,7 +3,7 @@ package jp.co.biglobe.isp.service.auth;
 import jp.co.biglobe.isp.domain.auth.Auth;
 import jp.co.biglobe.isp.domain.auth.AuthRepository;
 import jp.co.biglobe.isp.domain.auth.ValidAuth;
-import jp.co.biglobe.isp.domain.member.MemberEntity;
+import jp.co.biglobe.isp.domain.member.Member;
 import jp.co.biglobe.isp.domain.member.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,9 +32,9 @@ public class BiglobeAuthService {
 
         Auth auth = authRepository._Idとパスワードで検索する_存在しなかったらエラー(validAuth);
 
-        MemberEntity memberEntity = memberRepository.biglobeIdで検索する_存在しなかったらエラー(validAuth.getBiglobeId());
+        Member member = memberRepository.biglobeIdで検索する_存在しなかったらエラー(validAuth.getBiglobeId());
 
-        if(auth.認証OKか(memberEntity)){
+        if(auth.is認証OK(member)){
             return;
         }
 

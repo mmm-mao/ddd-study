@@ -1,14 +1,10 @@
 package jp.co.biglobe.isp.domain.member.member_life_cycle;
 
-import jp.co.biglobe.isp.domain.member.member_life_cycle.sign_up.HopeMailAddress;
 import jp.co.biglobe.isp.domain.member.member_life_cycle.sign_up.SignUp;
-import jp.co.biglobe.isp.domain.member.member_life_cycle.sign_up.SignUpDate;
 import jp.co.biglobe.isp.domain.member.member_life_cycle.withdrawal.NotExistWithdrawal;
 import jp.co.biglobe.isp.domain.member.member_life_cycle.withdrawal.ValidWithdrawal;
 import jp.co.biglobe.isp.domain.member.member_life_cycle.withdrawal.Withdrawal;
 import lombok.AllArgsConstructor;
-
-import java.time.LocalDate;
 
 @AllArgsConstructor
 public class MemberLifeCycle {
@@ -24,7 +20,7 @@ public class MemberLifeCycle {
 
     private MemberStatus 契約状態を判定する(){
 
-        if(withdrawal.申込済みか()){
+        if(withdrawal.is申込済み()){
             ValidWithdrawal validWithdrawal = (ValidWithdrawal)withdrawal;
             return validWithdrawal.契約状態を判定する();
         }
@@ -41,17 +37,14 @@ public class MemberLifeCycle {
         return new MemberLifeCycle(signUp, ValidWithdrawal.月末退会で作成する());
     }
 
-    public boolean 入会中か(){
-        return 契約状態を判定する().入会中か();
+    public boolean is入会中(){
+        return 契約状態を判定する().is入会中();
     }
 
-    public boolean 退会できるか(){
+    public boolean is退会できる(){
 
-        if(withdrawal.申込済みか()){
-            return false;
-        }
+        return withdrawal.is退会できる();
 
-        return true;
     }
 
 }

@@ -6,7 +6,7 @@ public class NotExistCourseChangeReserve implements CourseChangeReserve{
 
 
     @Override
-    public boolean コース変更を申し込み中か(){
+    public boolean isコース変更を申し込み中(){
         return false;
     }
 }

@@ -15,7 +15,7 @@ public class CourseSwitchingDate {
     }
 
 
-    boolean 過去日か(){
+    boolean is過去日(){
         return value.isBefore(LocalDate.now());
     }
 

@@ -7,7 +7,7 @@ public enum MemberStatus {
     退会済み;
 
 
-    public boolean 入会中か(){
+    public boolean is入会中(){
         return this.equals(MemberStatus.入会中) || this.equals(MemberStatus.退会予約中);
     }
 

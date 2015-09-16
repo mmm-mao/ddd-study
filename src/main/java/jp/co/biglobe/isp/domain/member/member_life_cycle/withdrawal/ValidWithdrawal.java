@@ -15,8 +15,13 @@ public class ValidWithdrawal implements Withdrawal{
 
 
     @Override
-    public boolean 申込済みか(){
+    public boolean is申込済み(){
         return true;
+    }
+
+    @Override
+    public boolean is退会できる(){
+        return false;
     }
 
     public MemberStatus 契約状態を判定する(){

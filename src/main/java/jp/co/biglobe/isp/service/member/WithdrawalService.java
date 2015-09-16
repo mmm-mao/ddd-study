@@ -5,7 +5,7 @@ import jp.co.biglobe.isp.domain.course.Course;
 import jp.co.biglobe.isp.domain.course.CourseRepository;
 import jp.co.biglobe.isp.domain.credit_card.CreditCardRepository;
 import jp.co.biglobe.isp.domain.member.BiglobeId;
-import jp.co.biglobe.isp.domain.member.MemberEntity;
+import jp.co.biglobe.isp.domain.member.Member;
 import jp.co.biglobe.isp.domain.member.MemberRepository;
 import jp.co.biglobe.isp.service.auth.BiglobeAuthService;
 import lombok.AllArgsConstructor;
@@ -32,16 +32,16 @@ public class WithdrawalService {
 
         biglobeAuthService.サービス利用不可をOKとして認証する(validAuth);
 
-        MemberEntity memberEntity = memberRepository.biglobeIdで検索する_存在しなかったらエラー(validAuth.getBiglobeId());
+        Member member = memberRepository.biglobeIdで検索する_存在しなかったらエラー(validAuth.getBiglobeId());
 
         Course course = courseRepository.biglobeIdで検索する_存在しなかったらエラー(validAuth.getBiglobeId());
 
-        return new WithdrawalConfirmContainer(memberEntity, course);
+        return new WithdrawalConfirmContainer(member, course);
     }
 
     @AllArgsConstructor
     public class WithdrawalConfirmContainer{
-        private final MemberEntity memberEntity;
+        private final Member member;
 
         private final Course course;
     }
@@ -58,16 +58,16 @@ public class WithdrawalService {
 
         biglobeAuthService.サービス利用不可をOKとして認証する(validAuth);
 
-        MemberEntity memberEntity = memberRepository.biglobeIdで検索する_存在しなかったらエラー(validAuth.getBiglobeId());
+        Member member = memberRepository.biglobeIdで検索する_存在しなかったらエラー(validAuth.getBiglobeId());
 
-        if(!memberEntity.退会できるか()){
+        if(!member.is退会できる()){
             throw new UnsupportedOperationException("既に退会申し込み済みです");
         }
     }
 
     private void 退会する(BiglobeId biglobeId){
-        MemberEntity memberEntity = memberRepository.biglobeIdで検索する_存在しなかったらエラー(biglobeId);
-        memberRepository.退会する(memberEntity.退会する());
+        Member member = memberRepository.biglobeIdで検索する_存在しなかったらエラー(biglobeId);
+        memberRepository.退会する(member.退会する());
     }
 
 

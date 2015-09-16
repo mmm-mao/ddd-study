@@ -11,7 +11,7 @@ public class BiglobeId {
 
     private final String value;
 
-    public boolean 同一ユーザIDか(BiglobeId biglobeId){
+    public boolean is同一ID(BiglobeId biglobeId){
         return this.equals(biglobeId);
     }
 

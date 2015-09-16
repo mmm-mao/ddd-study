@@ -18,11 +18,11 @@ public enum ValidCreditCardStatus {
         return ValidCreditCardStatus.無効;
     }
 
-    public boolean 無効か(){
+    public boolean is無効(){
         return this.equals(ValidCreditCardStatus.無効);
     }
 
-    public CreditCardRegisterStatus 無効から有効に戻せるか(){
+    public CreditCardRegisterStatus is無効から有効に戻せる(){
 
 
         if(今現在有効か()){

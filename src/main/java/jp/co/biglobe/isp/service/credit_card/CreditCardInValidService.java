@@ -2,7 +2,7 @@ package jp.co.biglobe.isp.service.credit_card;
 
 import jp.co.biglobe.isp.domain.credit_card.CreditCardNumber;
 import jp.co.biglobe.isp.domain.credit_card.CreditCardRepository;
-import jp.co.biglobe.isp.domain.credit_card.ValidCreditEntity;
+import jp.co.biglobe.isp.domain.credit_card.ValidCredit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +17,7 @@ public class CreditCardInValidService {
 
     public void 受け付ける(CreditCardNumber creditCardNumber){
 
-        ValidCreditEntity validCreditCardEntity = creditCardRepository.クレジットカード番号で検索する_存在しなかったらエラー(creditCardNumber);
+        ValidCredit validCreditCardEntity = creditCardRepository.クレジットカード番号で検索する_存在しなかったらエラー(creditCardNumber);
 
         creditCardRepository.無効にする(validCreditCardEntity.無効にする());
 

@@ -18,9 +18,9 @@ public class CreditCardCheckService {
 
         ValidCreditCardStatus validCreditCardStatus = creditCardRepository.有効かチェックする(creditCard);
 
-        CreditEntity creditEntity = creditCardRepository.クレジットカード番号で検索する(creditCard.getCreditCardNumber());
+        Credit credit = creditCardRepository.クレジットカード番号で検索する(creditCard.getCreditCardNumber());
 
-        return creditEntity.変更できるか(validCreditCardStatus);
+        return credit.is変更できる(validCreditCardStatus);
 
     }
 
@@ -28,9 +28,9 @@ public class CreditCardCheckService {
 
         ValidCreditCardStatus validCreditCardStatus = creditCardRepository.有効かチェックする(creditCard);
 
-        CreditEntity creditEntity = creditCardRepository.クレジットカード番号で検索する(creditCard.getCreditCardNumber());
+        Credit credit = creditCardRepository.クレジットカード番号で検索する(creditCard.getCreditCardNumber());
 
-        return creditEntity.無効から有効に戻せるか(validCreditCardStatus, biglobeId);
+        return credit.無効から有効に戻せるか(validCreditCardStatus, biglobeId);
 
     }
 

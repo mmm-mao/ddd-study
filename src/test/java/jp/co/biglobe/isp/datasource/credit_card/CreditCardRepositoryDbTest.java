@@ -6,7 +6,7 @@ import jp.co.biglobe.isp.datasource.credit_card.fixture.FixtureCredit;
 import jp.co.biglobe.isp.domain.credit_card.CreditCardNumber;
 import jp.co.biglobe.isp.domain.credit_card.CreditCardRepository;
 import jp.co.biglobe.isp.domain.credit_card.ValidCreditCardStatus;
-import jp.co.biglobe.isp.domain.credit_card.ValidCreditEntity;
+import jp.co.biglobe.isp.domain.credit_card.ValidCredit;
 import jp.co.biglobe.isp.domain.member.BiglobeId;
 import jp.co.biglobe.test.util.dbunit.DbUnitTester;
 import org.junit.Test;
@@ -38,7 +38,7 @@ public class CreditCardRepositoryDbTest {
     @Test
     public void 登録する() throws Exception {
 
-        ValidCreditEntity validCreditEntity = new ValidCreditEntity(
+        ValidCredit validCreditEntity = new ValidCredit(
                 new CreditCardNumber("111-111-1111"),
                 new BiglobeId("abc12345"),
                 ValidCreditCardStatus.有効
@@ -55,7 +55,7 @@ public class CreditCardRepositoryDbTest {
     @Test
     public void クレジットカード番号で検索する_存在しなかったらエラー() throws Exception {
 
-        ValidCreditEntity expected = new ValidCreditEntity(
+        ValidCredit expected = new ValidCredit(
                 new CreditCardNumber("111-111-1111"),
                 new BiglobeId("abc12345"),
                 ValidCreditCardStatus.有効
@@ -64,7 +64,7 @@ public class CreditCardRepositoryDbTest {
 
         tester.cleanInsertQuery(FixtureCredit.One.有効で登録済み());
 
-        ValidCreditEntity actual = creditCardRepository.クレジットカード番号で検索する_存在しなかったらエラー(new CreditCardNumber("111-111-1111"));
+        ValidCredit actual = creditCardRepository.クレジットカード番号で検索する_存在しなかったらエラー(new CreditCardNumber("111-111-1111"));
 
         assertThat(expected, is(actual));
     }

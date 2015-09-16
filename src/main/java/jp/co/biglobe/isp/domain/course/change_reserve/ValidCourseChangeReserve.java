@@ -15,9 +15,9 @@ public class ValidCourseChangeReserve implements CourseChangeReserve{
     }
 
     @Override
-    public boolean コース変更を申し込み中か(){
+    public boolean isコース変更を申し込み中(){
 
-        if(courseSwitchingDate.過去日か()){
+        if(courseSwitchingDate.is過去日()){
             return false;
         }
 

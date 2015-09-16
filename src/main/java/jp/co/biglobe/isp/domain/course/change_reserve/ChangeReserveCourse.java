@@ -14,5 +14,9 @@ public class ChangeReserveCourse {
     public CurrentCourse toCurrentCourse(){
         return new CurrentCourse(courseName);
     }
+
+    public boolean is変更を申し込むコースが適用中のコースと同じ(CurrentCourse currentCourse){
+        return courseName.is同じコース(currentCourse.getCourseName());
+    }
     
 }

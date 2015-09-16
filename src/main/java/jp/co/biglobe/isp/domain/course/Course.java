@@ -5,7 +5,7 @@ import jp.co.biglobe.isp.domain.course.change_reserve.CourseChangeReserve;
 import jp.co.biglobe.isp.domain.course.change_reserve.NotExistCourseChangeReserve;
 import jp.co.biglobe.isp.domain.course.change_reserve.ValidCourseChangeReserve;
 import jp.co.biglobe.isp.domain.member.BiglobeId;
-import jp.co.biglobe.isp.domain.member.MemberEntity;
+import jp.co.biglobe.isp.domain.member.Member;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
@@ -26,30 +26,30 @@ public class Course {
         return new Course(biglobeId, currentCourse, ValidCourseChangeReserve.作成する(changeReserveCourse));
     }
 
-    public boolean コース変更予約できるか(MemberEntity memberEntity, ChangeReserveCourse changeReserveCourse) {
+    public boolean isコース変更予約できる(Member member, ChangeReserveCourse changeReserveCourse) {
 
-        if (!memberEntity.入会中か()) {
+        if (!member.is入会中()) {
             return false;
         }
 
-        if (currentCourse.変更を申し込むコースが適用中のコースと同じか(changeReserveCourse)) {
+        if(changeReserveCourse.is変更を申し込むコースが適用中のコースと同じ(currentCourse)){
             return false;
         }
 
-        if (courseChangeReserve.コース変更を申し込み中か()) {
+        if (courseChangeReserve.isコース変更を申し込み中()) {
             return false;
         }
 
         return true;
     }
 
-    public boolean ニコニコ動画認証OKか(MemberEntity memberEntity){
+    public boolean isニコニコ動画認証OK(Member member){
 
-        if(!currentCourse.ニコニココースか()){
+        if(!currentCourse.isニコニココース()){
             return false;
         }
 
-        if(!memberEntity.入会中か()){
+        if(!member.is入会中()){
             return false;
         }
 

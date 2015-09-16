@@ -6,7 +6,7 @@ import jp.co.biglobe.isp.domain.member_profile.profile.Profile;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
-public class MemberProfileEntity {
+public class MemberProfile {
 
     private final BiglobeId biglobeId;
 
@@ -14,8 +14,8 @@ public class MemberProfileEntity {
 
     private final MailAddress mailAddress;
 
-    public static MemberProfileEntity 登録する(BiglobeId biglobeId, SignUpRequest signUpRequest){
-        return new MemberProfileEntity(biglobeId, signUpRequest.getProfile(), signUpRequest.getHopeMailAddress().メールアドレスに変換する());
+    public static MemberProfile 登録する(BiglobeId biglobeId, SignUpRequest signUpRequest){
+        return new MemberProfile(biglobeId, signUpRequest.getProfile(), signUpRequest.getHopeMailAddress().メールアドレスに変換する());
     }
 
 }
